@@ -2,8 +2,8 @@
   --accent: #c0c0c0;          /* classic silver */
   --accent-light: #d9d9d9;    /* lighter polished silver */
   --bg: #f2f2f2;              /* soft brushed metal background */
-  --text: #1e1e1e;            /* dark steel text */
-  --muted: #6b6b6b;           /* muted gray */
+  --text: #000;            /* dark steel text */
+  --muted: #333;           /* muted gray */
   --surface: #ffffff;         /* card surface */
   --radius: 8px;
 }
@@ -28,9 +28,9 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("https://tse1.mm.bing.net/th/id/OIP.P2Eg6m6x9qZ4rbMzaEm4IQHaEo?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3")
+  background: url("https://tse1.mm.bing.net/th/id/OIP.P2Eg6m6x9qZ4rbMzaEm4IQHaEo?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3") /* cool desert background */
               center/cover no-repeat;
-  filter: blur(10px);
+  filter: blur(6px);
   transform: scale(1.1); /* prevents blur edges */
   z-index: -1;
 }
