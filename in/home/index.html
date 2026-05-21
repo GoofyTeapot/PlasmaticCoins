@@ -5,11 +5,23 @@
   <title>Template Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    .inline-icon {
+      height: 1em;
+      width: 1em;
+      vertical-align: -0.15em; /* aligns with text baseline */
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">My Website</h1>
+      <h1 class="logo">
+        <img src="img/logo.png" class="inline-icon">
+        My Website
+      </h1>
+
       <nav class="nav">
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -17,6 +29,7 @@
       </nav>
     </div>
   </header>
+
 
   <main class="container">
     <section class="hero">
