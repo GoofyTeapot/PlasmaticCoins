@@ -1,7 +1,2 @@
-﻿Coin Type,Coins per Roll,Cost per Roll,Rolls per Box,Cost per Box
-Pennies,50,$0.50,50,$25
-Nickels,40,$2.00,50,$100
-Dimes,50,$5.00,50,$250
-Quarters,40,$10.00,50,$500
-Half Dollars,20,$10.00,50,$500
-Dollar Coins,25,$25.00,50,"$1,250"
+Comma,Seperated,Values
+Its,A,Stylesheet
