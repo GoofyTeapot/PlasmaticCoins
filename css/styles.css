@@ -24,6 +24,17 @@ body {
   line-height: 1.6;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://tse1.mm.bing.net/th/id/OIP.P2Eg6m6x9qZ4rbMzaEm4IQHaEo?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3")
+              center/cover no-repeat;
+  filter: blur(10px);
+  transform: scale(1.1); /* prevents blur edges */
+  z-index: -1;
+}
+
 .container {
   width: min(1100px, 100% - 2rem);
   margin: 0 auto;
