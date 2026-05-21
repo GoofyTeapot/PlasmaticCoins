@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    .inline-icon {
+      height: 1em;
+      width: 1em;
+      vertical-align: -0.15em; /* aligns with text baseline */
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #clock {
+      margin-left: auto;     /* pushes it to the right */
+      font-weight: bold;     /* bold text */
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <nav class="nav">
+        <a href="../home/">Home</a>
+        <a href="../about/">About</a>
+        <a href="../contact/">Contact</a>
+        <span id="clock"></span>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container">
+    <section class="hero">
+      <h2>Welcome to the template</h2>
+      <p>
+        This is a simple starter layout using <code>#4682B4</code> as the accent color.
+      </p>
+      <button class="btn-primary">Get Started</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Card One</h3>
+        <p>Some sample text for this card.</p>
+      </article>
+      <article class="card">
+        <h3>Card Two</h3>
+        <p>Another bit of placeholder content.</p>
+      </article>
+      <article class="card">
+        <h3>Card Three</h3>
+        <p>More text to fill out the layout.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 My Website</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
