@@ -13,6 +13,18 @@
       vertical-align: -0.15em; /* aligns with text baseline */
       object-fit: contain;
     }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #clock {
+      margin-left: auto;     /* pushes it to the right */
+      font-weight: bold;     /* bold text */
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -20,13 +32,14 @@
     <div class="container">
       <h1 class="logo">
         <img src="../../img/logo.png" class="inline-icon">
-        My Website
+        Plasmatic Coins
       </h1>
 
       <nav class="nav">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
+        <span id="clock"></span>
       </nav>
     </div>
   </header>
@@ -62,5 +75,16 @@
       <p>&copy; 2026 My Website</p>
     </div>
   </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>
