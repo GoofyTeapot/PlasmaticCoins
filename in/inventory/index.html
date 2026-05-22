@@ -6,7 +6,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../../img/logo.png">
   <link rel="stylesheet" href="../../css/styles.css" />
+
+  <style>
+    .item-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .item-tab {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 380px;
+    }
+
+    .item-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .item-tab h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.2rem;
+    }
+
+    .item-tab p {
+      margin: 0 0 6px 0;
+      color: #333;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .qty {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .paypal-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #87CEEB, #00008B);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .paypal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
@@ -25,27 +94,18 @@
     </div>
   </header>
 
-
   <main class="container">
     <section class="hero">
-      <h2>Welcome to the template</h2>
-      <p>
-        This is a simple starter layout using <code>#4682B4</code> as the accent color.
-      </p>
-      <button class="btn-primary">Get Started</button>
+      <h2>Available Items</h2>
+      <p>Browse items currently available for purchase.</p>
     </section>
 
-    <section class="card-grid">
-      <article class="card">
-        <h3>Page Indev</h3>
-        <p>This page is in development and will later show our available inventory.</p>
-      </article>
-    </section>
+    <section class="item-list" id="itemList"></section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; Plasmatic Coins Co.</p>
+      <p>&copy; 2026 Plasmatic Coins</p>
     </div>
   </footer>
 
@@ -55,9 +115,34 @@
       const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       document.getElementById("clock").textContent = time;
     }
-
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Load JSON items
+    fetch("items.json")
+      .then(res => res.json())
+      .then(items => {
+        const container = document.getElementById("itemList");
+
+        items.forEach(item => {
+          const tab = document.createElement("div");
+          tab.className = "item-tab";
+
+          tab.innerHTML = `
+            <img src="${item.photo}" class="item-img" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p class="price">$${item.price.toFixed(2)}</p>
+            <p class="qty">Quantity: ${item.quantity}</p>
+            <p>${item.description}</p>
+
+            <a href="https://paypal.me/PlasmaticCoins" target="_blank" class="paypal-btn">
+              Pay with PayPal
+            </a>
+          `;
+
+          container.appendChild(tab);
+        });
+      });
   </script>
 </body>
 </html>
