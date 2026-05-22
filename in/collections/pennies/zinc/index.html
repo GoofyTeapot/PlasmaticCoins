@@ -49,65 +49,39 @@
   <main class="container">
     <section class="hero">
       <h2>Zinc Pennies Checklist (1982–2025)</h2>
-      <p>Track every zinc Lincoln cent from 1982 through 2025 (S, D, and P mints).</p>
+      <p>Track every zinc Lincoln cent from 1982 through 2025.</p>
 
-      <div class="total-display" id="totalDisplay">0 / 150 collected</div>
+      <div class="total-display" id="totalDisplay">0 / 88 collected</div>
 
       <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
     </section>
 
-    <!-- 1982–1989 -->
+    <!-- Sections with containers -->
     <section class="card">
       <h3>1982–1989</h3>
-      <!-- Auto-generated rows -->
-      <!-- 1982–1989 -->
-      ${[...Array(8)].map((_,i)=>1982+i).map(y=>`
-        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
-        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
-        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
-      `).join('')}
+      <div id="years_82_89"></div>
     </section>
 
-    <!-- 1990–1999 -->
     <section class="card">
       <h3>1990–1999</h3>
-      ${[...Array(10)].map((_,i)=>1990+i).map(y=>`
-        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
-        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
-        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
-      `).join('')}
+      <div id="years_90_99"></div>
     </section>
 
-    <!-- 2000–2009 -->
     <section class="card">
       <h3>2000–2009</h3>
-      ${[...Array(10)].map((_,i)=>2000+i).map(y=>`
-        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
-        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
-        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
-      `).join('')}
+      <div id="years_00_09"></div>
     </section>
 
-    <!-- 2010–2019 -->
     <section class="card">
       <h3>2010–2019</h3>
-      ${[...Array(10)].map((_,i)=>2010+i).map(y=>`
-        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
-        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
-        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
-      `).join('')}
+      <div id="years_10_19"></div>
     </section>
 
-    <!-- 2020–2025 -->
     <section class="card">
       <h3>2020–2025</h3>
-      ${[2020,2021,2022,2023,2024,2025].map(y=>`
-        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
-        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
-        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
-      `).join('')}
+      <div id="years_20_25"></div>
     </section>
 
   </main>
@@ -126,6 +100,29 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+  </script>
+
+  <!-- Checkbox Generation -->
+  <script>
+    function generateRange(start, end, containerId) {
+      const container = document.getElementById(containerId);
+      let html = "";
+
+      for (let y = start; y <= end; y++) {
+        html += `
+          <label><input type="checkbox" data-id="${y}D"> ${y}-D</label><br>
+          <label><input type="checkbox" data-id="${y}P"> ${y}-P</label><br><br>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    generateRange(1982, 1989, "years_82_89");
+    generateRange(1990, 1999, "years_90_99");
+    generateRange(2000, 2009, "years_00_09");
+    generateRange(2010, 2019, "years_10_19");
+    generateRange(2020, 2025, "years_20_25");
   </script>
 
   <!-- Firebase Logic -->
@@ -152,18 +149,15 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    const checkboxes = document.querySelectorAll("input[type='checkbox'][data-id]");
-    const totalDisplay = document.getElementById("totalDisplay");
-    const progressBar = document.getElementById("progressBar");
-
+    let checkboxes;
     let currentUser = null;
 
     function updateProgress() {
-      const total = 150;
+      const total = 88;
       const collected = [...checkboxes].filter(cb => cb.checked).length;
 
-      totalDisplay.textContent = `${collected} / ${total} collected`;
-      progressBar.style.width = `${(collected / total) * 100}%`;
+      document.getElementById("totalDisplay").textContent = `${collected} / ${total} collected`;
+      document.getElementById("progressBar").style.width = `${(collected / total) * 100}%`;
     }
 
     async function saveProgress() {
@@ -199,13 +193,6 @@
       updateProgress();
     }
 
-    checkboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        updateProgress();
-        saveProgress();
-      });
-    });
-
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         alert("You must be signed in to track your collection.");
@@ -213,6 +200,17 @@
       }
 
       currentUser = user;
+
+      // Now that checkboxes exist, select them
+      checkboxes = document.querySelectorAll("input[type='checkbox'][data-id]");
+
+      checkboxes.forEach(cb => {
+        cb.addEventListener("change", () => {
+          updateProgress();
+          saveProgress();
+        });
+      });
+
       await loadProgress();
     });
   </script>
