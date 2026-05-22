@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "2023‑D Jovita Idar Quarter",
     "price": 79.99,
     "shipping": 7.99,
@@ -7,7 +8,6 @@
     "grade": "MS-64",
     "quantity": 1,
     "photo": "https://storage.googleapis.com/images.pricecharting.com/2f6e14631697aca1dee5bfbe06dd2af892a137c75c090e955b26bbf7c4ed6d32/240.jpg",
-    "description": "`In Cod We Trust` error coin with strong details.",
-    "id": 1,
+    "description": "‘In Cod We Trust’ die chip error coin with strong details."
   }
 ]
