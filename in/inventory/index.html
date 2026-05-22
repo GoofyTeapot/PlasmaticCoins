@@ -97,10 +97,10 @@
 
       <script>
         fetch("../../includes/nav.html")
-        .then(res => res.text())
-            .then(html => {
-              document.getElementById("nav-placeholder").innerHTML = html;
-            });
+          .then(res => res.text())
+          .then(html => {
+            document.getElementById("nav-placeholder").innerHTML = html;
+          });
       </script>
     </div>
   </header>
@@ -129,7 +129,7 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    fetch("items.json")
+    fetch("items.json?v=" + Date.now())
       .then(res => res.json())
       .then(items => {
         const container = document.getElementById("itemList");
