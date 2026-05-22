@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <nav class="nav">
+        <a href="../home/">Home</a>
+        <a href="../about/">About</a>
+        <a href="../contact/">Contact</a>
+        <a href="../inventory/">Inventory</a>
+        <span id="clock"></span>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container">
+    <section class="hero">
+      <h2>Collections</h2>
+      <p>
+        Looking for a place to keep track of your coins? Here's the place to start! Good news: your data will save!*
+        <br/>
+        <i style="font-size: 8px;">*Data only saves while logged in, and saves to your account for later use. Sign up or sign in <a href="../../auth/signup/">here</a>.</i>
+      </p>
+      <a class="btn-primary" href="https://goofyteapot.github.io/PlasmaticCoins/in/collections/quarters/states/">States</a>
+      <a class="btn-primary" href="https://goofyteapot.github.io/PlasmaticCoins/in/collections/quarters/america-the-beautiful/">America the Beautiful</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; Plasmatic Coins Co.</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
