@@ -28,11 +28,14 @@
   <main class="container">
     <section class="hero">
       <h2>Welcome to Plasmatic Coins Co!</h2>
-      <p>
-        We're glad to meet you. We're a numismatics group based in Apple Valley, California. Learn more <a href="../about/">here.</a>
+
+      <!-- Dynamic greeting -->
+      <p id="heroText">
+        Welcome to Plasmatic Coins! We're a numismatics group based in Apple Valley, California. 
+        Learn more <a href="../about/">here.</a>
       </p>
 
-      <!-- Button that disappears when user is logged in -->
+      <!-- Button hidden when signed in -->
       <button id="featureBtn" class="btn-primary" onclick="window.location.href='../../auth/signup/'">
         Access more features!
       </button>
@@ -66,15 +69,22 @@
       const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       document.getElementById("clock").textContent = time;
     }
-
     setInterval(updateClock, 1000);
     updateClock();
   </script>
 
-  <!-- Firebase: Hide button if user is signed in -->
+  <!-- Firebase Auth + Firestore -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { 
+      getAuth, 
+      onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc 
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
@@ -87,11 +97,36 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       const btn = document.getElementById("featureBtn");
-      if (user && btn) {
-        btn.style.display = "none";
+      const heroText = document.getElementById("heroText");
+
+      if (user) {
+        // Hide the button
+        if (btn) btn.style.display = "none";
+
+        // Load user settings (name)
+        const ref = doc(db, "users", user.uid);
+        const snap = await getDoc(ref);
+
+        let name = user.email; // fallback if no name set
+
+        if (snap.exists() && snap.data().name) {
+          name = snap.data().name;
+        }
+
+        heroText.innerHTML = `
+          Welcome back, <strong>${name}</strong>! We're a numismatics group based in Apple Valley, California. 
+          Learn more <a href="../about/">here.</a>
+        `;
+      } else {
+        // Not signed in
+        heroText.innerHTML = `
+          Welcome to Plasmatic Coins! We're a numismatics group based in Apple Valley, California. 
+          Learn more <a href="../about/">here.</a>
+        `;
       }
     });
   </script>
