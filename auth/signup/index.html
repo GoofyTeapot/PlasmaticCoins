@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Plasmatic Coins</title>
+
+  <style>
+    :root {
+      --accent: #c0c0c0;
+      --accent-light: #d9d9d9;
+      --bg: #f2f2f2;
+      --text: #000;
+      --surface: #ffffff;
+      --radius: 8px;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("https://tse1.mm.bing.net/th/id/OIP.P2Eg6m6x9qZ4rbMzaEm4IQHaEo?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3")
+                  center/cover no-repeat;
+      filter: blur(6px);
+      transform: scale(1.1);
+      z-index: -1;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      padding: 1rem;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .container {
+      width: min(600px, 100% - 2rem);
+      margin: 3rem auto;
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #87CEEB, #00008B);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">Plasmatic Coins – Sign Up</header>
+
+<div class="container">
+  <h2>Create Account</h2>
+  <p>Enter your email and we’ll send you a secure login link.</p>
+
+  <input type="email" id="email" placeholder="Email address">
+  <button id="sendLink" class="btn-primary">Send Login Link</button>
+
+  <p id="status"></p>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
+    authDomain: "plasmaticcoins-server.firebaseapp.com",
+    projectId: "plasmaticcoins-server",
+    storageBucket: "plasmaticcoins-server.firebasestorage.app",
+    messagingSenderId: "148763283032",
+    appId: "1:148763283032:web:e547227225642fa226c42d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const actionCodeSettings = {
+    url: "https://YOUR-USERNAME.github.io/YOUR-REPO/login.html",
+    handleCodeInApp: true
+  };
+
+  document.getElementById("sendLink").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const status = document.getElementById("status");
+
+    sendSignInLinkToEmail(auth, email, actionCodeSettings)
+      .then(() => {
+        window.localStorage.setItem("emailForSignIn", email);
+        status.textContent = "Login link sent! Check your email.";
+      })
+      .catch((error) => {
+        status.textContent = "Error: " + error.message;
+      });
+  });
+</script>
+
+</body>
+</html>
