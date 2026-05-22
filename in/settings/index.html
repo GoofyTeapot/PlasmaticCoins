@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">
+      <img src="../../img/logo.png" class="inline-icon">
+      Plasmatic Coins — Settings
+    </h1>
+  </div>
+</header>
+
+<main class="container">
+  <h2>Your Settings</h2>
+
+  <label>Display Name</label>
+  <input id="nameInput" type="text" placeholder="Enter your name">
+
+  <button class="btn-primary" id="saveBtn">Save Settings</button>
+
+  <p id="status"></p>
+</main>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { 
+    getAuth, 
+    onAuthStateChanged 
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { 
+    getFirestore, 
+    doc, 
+    getDoc, 
+    setDoc 
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
+    authDomain: "plasmaticcoins-server.firebaseapp.com",
+    projectId: "plasmaticcoins-server",
+    storageBucket: "plasmaticcoins-server.firebasestorage.app",
+    messagingSenderId: "148763283032",
+    appId: "1:148763283032:web:e547227225642fa226c42d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const nameInput = document.getElementById("nameInput");
+  const saveBtn = document.getElementById("saveBtn");
+  const status = document.getElementById("status");
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.href = "../../auth/signup/";
+      return;
+    }
+
+    currentUser = user;
+
+    // Load existing settings
+    const ref = doc(db, "users", user.uid);
+    const snap = await getDoc(ref);
+
+    if (snap.exists() && snap.data().name) {
+      nameInput.value = snap.data().name;
+    }
+  });
+
+  saveBtn.onclick = async () => {
+    if (!currentUser) return;
+
+    const ref = doc(db, "users", currentUser.uid);
+
+    await setDoc(ref, {
+      name: nameInput.value
+    }, { merge: true });
+
+    status.textContent = "Saved!";
+  };
+</script>
+
+</body>
+</html>
