@@ -21,10 +21,9 @@
       padding: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       position: relative;
-      min-height: 380px;
+      min-height: 420px;
     }
 
-    /* 100x100 image */
     .item-img {
       width: 100px;
       height: 100px;
@@ -36,7 +35,7 @@
     }
 
     .item-tab h3 {
-      margin-top: 130px; /* pushes text below the image */
+      margin-top: 130px;
       margin-bottom: 6px;
       font-size: 1.2rem;
     }
@@ -54,43 +53,32 @@
     .qty {
       font-size: 0.9rem;
       color: #666;
-      margin-bottom: 40px;
+      margin-bottom: 6px;
+    }
+
+    .paypal-btn, .order-btn {
+      position: absolute;
+      bottom: 12px;
+      padding: 8px 16px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .paypal-btn {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      padding: 8px 16px;
+      right: 140px;
       background: linear-gradient(135deg, #87CEEB, #00008B);
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .paypal-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
-    }
-
-     .order-btn {
-      position: absolute;
-      bottom: 12px;
+    .order-btn {
       right: 12px;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #00FF00, #00EE00);
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      background: linear-gradient(135deg, #00FF00, #00CC00);
     }
 
-    .order-btn:hover {
+    .paypal-btn:hover, .order-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 14px rgba(0,0,0,0.35);
     }
@@ -139,7 +127,6 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Load JSON items
     fetch("items.json")
       .then(res => res.json())
       .then(items => {
@@ -152,8 +139,14 @@
           tab.innerHTML = `
             <img src="${item.photo}" class="item-img" alt="${item.name}">
             <h3>${item.name}</h3>
-            <p class="price">$${item.price.toFixed(2)}</p>
+
+            <p class="price">Price: $${item.price.toFixed(2)}</p>
+            <p class="price">Shipping: $${item.shipping.toFixed(2)}</p>
+            <p class="price">Total: $${item.total.toFixed(2)}</p>
+
+            <p class="qty">Grade: ${item.grade}</p>
             <p class="qty">Quantity: ${item.quantity}</p>
+
             <p>${item.description}</p>
 
             <a href="https://paypal.me/PlasmaticCoins" target="_blank" class="paypal-btn">
