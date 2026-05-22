@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>2026 Semiquincentennial Collection - PlasmaticCoins</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="../../../img/logo.png">
-  <link rel="stylesheet" href="../../../css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Semiquincentennial Checklist - PlasmaticCoins</title>
+  <link rel="stylesheet" href="../../../../css/styles.css">
+  <link rel="icon" href="../../../../img/logo.png">
 
   <style>
-    /* Horizontal scrolling ribbon */
+    /* Ribbon */
     .ribbon-container {
       width: 100%;
       overflow: hidden;
@@ -16,160 +16,225 @@
       padding: 10px 0;
       border-bottom: 2px solid #111;
     }
-
     .ribbon-track {
       display: flex;
       gap: 2rem;
       animation: scroll 35s linear infinite;
-      will-change: transform;
     }
-
     .ribbon-track img {
       height: 70px;
-      object-fit: contain;
       filter: drop-shadow(0 0 4px rgba(0,0,0,0.6));
     }
-
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* Match ATB card layout */
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    /* Progress bar */
+    .progress-container {
+      width: 100%;
+      background: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-bar {
+      height: 20px;
+      background: #4682B4;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .total-display {
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
 
-    .coin-card {
+    /* Checklist style (matches State Quarters) */
+    .checklist-card {
       background: #ffffff10;
       padding: 1rem;
       border-radius: 8px;
-      text-align: center;
+      margin-bottom: 1.5rem;
     }
-
-    .coin-card img {
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      margin-bottom: 0.5rem;
+    .checklist-card label {
+      display: block;
+      margin: 4px 0;
+      font-size: 1rem;
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">
-        <img src="../../../img/logo.png" class="inline-icon">
-        Plasmatic Coins
-      </h1>
 
-      <nav class="nav">
-        <a href="../../home/">Home</a>
-        <a href="../../about/">About</a>
-        <a href="../../contact/">Contact</a>
-        <a href="../../inventory/">Inventory</a>
-        <span id="clock"></span>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">
+      <img src="../../../../img/logo.png" class="inline-icon">
+      Plasmatic Coins
+    </h1>
 
-  <!-- TOP SCROLLING RIBBON -->
-  <div class="ribbon-container">
-    <div class="ribbon-track">
-
-      <!-- 8 images (duplicated for seamless loop) -->
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg">
-
-      <!-- duplicate -->
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg">
-      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg">
-
-    </div>
+    <nav class="nav">
+      <a href="../../../home/">Home</a>
+      <a href="../../../about/">About</a>
+      <a href="../../../contact/">Contact</a>
+      <a href="../../../inventory/">Inventory</a>
+      <span id="clock"></span>
+    </nav>
   </div>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>2026 Semiquincentennial Obverse Collection</h2>
-      <p>A gallery of all eight official U.S. Mint Semiquincentennial obverse designs.</p>
-    </section>
+<!-- TOP RIBBON -->
+<div class="ribbon-container">
+  <div class="ribbon-track">
 
-    <section class="collection-grid">
+    <!-- 8 images (duplicated for seamless loop) -->
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg">
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg">
-        <h3>Nickel (D Mint)</h3>
-      </div>
+    <!-- duplicate -->
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg">
+    <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg">
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg">
-        <h3>Dime (D Mint)</h3>
-      </div>
+  </div>
+</div>
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg">
-        <h3>Half Dollar (P Mint)</h3>
-      </div>
+<main class="container">
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg">
-        <h3>Mayflower (D Mint)</h3>
-      </div>
+  <section class="hero">
+    <h2>2026 Semiquincentennial Checklist</h2>
+    <p>Track all 8 Semiquincentennial obverse designs.</p>
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg">
-        <h3>Revolutionary War (D Mint)</h3>
-      </div>
+    <div class="total-display" id="totalDisplay">0 / 8 collected</div>
 
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg">
-        <h3>Declaration of Independence (P Mint)</h3>
-      </div>
-
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg">
-        <h3>U.S. Constitution (D Mint)</h3>
-      </div>
-
-      <div class="coin-card">
-        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg">
-        <h3>Gettysburg (P Mint)</h3>
-      </div>
-
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2026 Plasmatic Coins</p>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      document.getElementById("clock").textContent = time;
+  <section class="checklist-card">
+
+    <label><input type="checkbox" data-id="NICKEL"> Nickel (D Mint)</label>
+    <label><input type="checkbox" data-id="DIME"> Dime (D Mint)</label>
+    <label><input type="checkbox" data-id="HALF"> Half Dollar (P Mint)</label>
+    <label><input type="checkbox" data-id="MAYFLOWER"> Mayflower (D Mint)</label>
+    <label><input type="checkbox" data-id="REVWAR"> Revolutionary War (D Mint)</label>
+    <label><input type="checkbox" data-id="DECLARATION"> Declaration of Independence (P Mint)</label>
+    <label><input type="checkbox" data-id="CONSTITUTION"> U.S. Constitution (D Mint)</label>
+    <label><input type="checkbox" data-id="GETTYSBURG"> Gettysburg (P Mint)</label>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Plasmatic Coins</p>
+  </div>
+</footer>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById("clock").textContent = time;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+<!-- FIREBASE LOGIC -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
+    authDomain: "plasmaticcoins-server.firebaseapp.com",
+    projectId: "plasmaticcoins-server",
+    storageBucket: "plasmaticcoins-server.firebasestorage.app",
+    messagingSenderId: "148763283032",
+    appId: "1:148763283032:web:e547227225642fa226c42d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const checkboxes = document.querySelectorAll("input[type='checkbox'][data-id]");
+  const totalDisplay = document.getElementById("totalDisplay");
+  const progressBar = document.getElementById("progressBar");
+
+  let currentUser = null;
+
+  function updateProgress() {
+    const total = 8;
+    const collected = [...checkboxes].filter(cb => cb.checked).length;
+
+    totalDisplay.textContent = `${collected} / ${total} collected`;
+    progressBar.style.width = `${(collected / total) * 100}%`;
+  }
+
+  async function saveProgress() {
+    if (!currentUser) return;
+
+    const collected = {};
+    checkboxes.forEach(cb => {
+      collected[cb.dataset.id] = cb.checked;
+    });
+
+    await setDoc(
+      doc(db, "users", currentUser.uid, "collections", "semiq"),
+      collected,
+      { merge: true }
+    );
+  }
+
+  async function loadProgress() {
+    if (!currentUser) return;
+
+    const ref = doc(db, "users", currentUser.uid, "collections", "semiq");
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+      const data = snap.data();
+      checkboxes.forEach(cb => {
+        if (data[cb.dataset.id] === true) cb.checked = true;
+      });
     }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+
+    updateProgress();
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+      updateProgress();
+      saveProgress();
+    });
+  });
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      alert("You must be signed in to track your collection.");
+      return;
+    }
+
+    currentUser = user;
+    await loadProgress();
+  });
+</script>
 
 </body>
 </html>
