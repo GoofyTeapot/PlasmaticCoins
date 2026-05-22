@@ -1,23 +1,9 @@
 [
   {
     "name": "1909 VDB Lincoln Cent",
-    "price": 12.99,
-    "quantity": 3,
-    "photo": "../../img/items/item1.jpg",
+    "price": 299.99,
+    "quantity": 7,
+    "photo": "https://storage.googleapis.com/images.pricecharting.com/2f6e14631697aca1dee5bfbe06dd2af892a137c75c090e955b26bbf7c4ed6d32/240.jpg",
     "description": "Beautiful early Lincoln Wheat Cent with strong details."
-  },
-  {
-    "name": "1964 Silver Roosevelt Dime",
-    "price": 4.50,
-    "quantity": 12,
-    "photo": "../../img/items/item2.jpg",
-    "description": "90% silver, brilliant condition, great for stacking or collecting."
-  },
-  {
-    "name": "Bicentennial Quarter",
-    "price": 1.25,
-    "quantity": 25,
-    "photo": "../../img/items/item3.jpg",
-    "description": "Classic 1776‑1976 design, lightly circulated."
   }
 ]
