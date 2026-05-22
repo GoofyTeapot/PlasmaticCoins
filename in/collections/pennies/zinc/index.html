@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zinc Pennies Checklist (1982–2025) - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../../../img/logo.png">
+  <link rel="stylesheet" href="../../../../css/styles.css" />
+
+  <style>
+    .progress-container {
+      width: 100%;
+      background: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-bar {
+      height: 20px;
+      background: #4682B4;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .total-display {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <nav class="nav">
+        <a href="../../../home/">Home</a>
+        <a href="../../../about/">About</a>
+        <a href="../../../contact/">Contact</a>
+        <a href="../../../inventory/">Inventory</a>
+        <span id="clock"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Zinc Pennies Checklist (1982–2025)</h2>
+      <p>Track every zinc Lincoln cent from 1982 through 2025 (S, D, and P mints).</p>
+
+      <div class="total-display" id="totalDisplay">0 / 150 collected</div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </section>
+
+    <!-- 1982–1989 -->
+    <section class="card">
+      <h3>1982–1989</h3>
+      <!-- Auto-generated rows -->
+      <!-- 1982–1989 -->
+      ${[...Array(8)].map((_,i)=>1982+i).map(y=>`
+        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
+        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
+        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
+      `).join('')}
+    </section>
+
+    <!-- 1990–1999 -->
+    <section class="card">
+      <h3>1990–1999</h3>
+      ${[...Array(10)].map((_,i)=>1990+i).map(y=>`
+        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
+        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
+        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
+      `).join('')}
+    </section>
+
+    <!-- 2000–2009 -->
+    <section class="card">
+      <h3>2000–2009</h3>
+      ${[...Array(10)].map((_,i)=>2000+i).map(y=>`
+        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
+        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
+        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
+      `).join('')}
+    </section>
+
+    <!-- 2010–2019 -->
+    <section class="card">
+      <h3>2010–2019</h3>
+      ${[...Array(10)].map((_,i)=>2010+i).map(y=>`
+        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
+        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
+        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
+      `).join('')}
+    </section>
+
+    <!-- 2020–2025 -->
+    <section class="card">
+      <h3>2020–2025</h3>
+      ${[2020,2021,2022,2023,2024,2025].map(y=>`
+        <label><input type="checkbox" data-id="${y}S"> ${y}‑S</label><br>
+        <label><input type="checkbox" data-id="${y}D"> ${y}‑D</label><br>
+        <label><input type="checkbox" data-id="${y}P"> ${y}‑P</label><br><br>
+      `).join('')}
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc, 
+      setDoc 
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
+      authDomain: "plasmaticcoins-server.firebaseapp.com",
+      projectId: "plasmaticcoins-server",
+      storageBucket: "plasmaticcoins-server.firebasestorage.app",
+      messagingSenderId: "148763283032",
+      appId: "1:148763283032:web:e547227225642fa226c42d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox'][data-id]");
+    const totalDisplay = document.getElementById("totalDisplay");
+    const progressBar = document.getElementById("progressBar");
+
+    let currentUser = null;
+
+    function updateProgress() {
+      const total = 150;
+      const collected = [...checkboxes].filter(cb => cb.checked).length;
+
+      totalDisplay.textContent = `${collected} / ${total} collected`;
+      progressBar.style.width = `${(collected / total) * 100}%`;
+    }
+
+    async function saveProgress() {
+      if (!currentUser) return;
+
+      const collected = {};
+      checkboxes.forEach(cb => {
+        collected[cb.dataset.id] = cb.checked;
+      });
+
+      await setDoc(
+        doc(db, "users", currentUser.uid, "collections", "zincPennies"),
+        collected,
+        { merge: true }
+      );
+    }
+
+    async function loadProgress() {
+      if (!currentUser) return;
+
+      const ref = doc(db, "users", currentUser.uid, "collections", "zincPennies");
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+        const data = snap.data();
+        checkboxes.forEach(cb => {
+          if (data[cb.dataset.id] === true) {
+            cb.checked = true;
+          }
+        });
+      }
+
+      updateProgress();
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener("change", () => {
+        updateProgress();
+        saveProgress();
+      });
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        alert("You must be signed in to track your collection.");
+        return;
+      }
+
+      currentUser = user;
+      await loadProgress();
+    });
+  </script>
+
+</body>
+</html>
