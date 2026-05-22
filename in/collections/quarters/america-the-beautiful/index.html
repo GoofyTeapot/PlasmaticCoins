@@ -6,6 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="../../../../img/logo.png">
   <link rel="stylesheet" href="../../../../css/styles.css" />
+
+  <style>
+    .progress-container {
+      width: 100%;
+      background: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-bar {
+      height: 20px;
+      background: #4682B4;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .total-display {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,122 +51,128 @@
     <section class="hero">
       <h2>America the Beautiful Quarters Checklist</h2>
       <p>Track all 56 ATB Quarters (2010–2021).</p>
+
+      <div class="total-display" id="totalDisplay">0 / 56 collected</div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
     </section>
 
     <!-- 2010 -->
     <section class="card">
       <h3>2010</h3>
-      <label><input type="checkbox"> Hot Springs (AR)</label><br>
-      <label><input type="checkbox"> Yellowstone (WY)</label><br>
-      <label><input type="checkbox"> Yosemite (CA)</label><br>
-      <label><input type="checkbox"> Grand Canyon (AZ)</label><br>
-      <label><input type="checkbox"> Mount Hood (OR)</label>
+      <label><input type="checkbox" data-id="HS"> Hot Springs (AR)</label><br>
+      <label><input type="checkbox" data-id="YS"> Yellowstone (WY)</label><br>
+      <label><input type="checkbox" data-id="YO"> Yosemite (CA)</label><br>
+      <label><input type="checkbox" data-id="GC"> Grand Canyon (AZ)</label><br>
+      <label><input type="checkbox" data-id="MH"> Mount Hood (OR)</label>
     </section>
 
     <!-- 2011 -->
     <section class="card">
       <h3>2011</h3>
-      <label><input type="checkbox"> Gettysburg (PA)</label><br>
-      <label><input type="checkbox"> Glacier (MT)</label><br>
-      <label><input type="checkbox"> Olympic (WA)</label><br>
-      <label><input type="checkbox"> Vicksburg (MS)</label><br>
-      <label><input type="checkbox"> Chickasaw (OK)</label>
+      <label><input type="checkbox" data-id="GB"> Gettysburg (PA)</label><br>
+      <label><input type="checkbox" data-id="GL"> Glacier (MT)</label><br>
+      <label><input type="checkbox" data-id="OL"> Olympic (WA)</label><br>
+      <label><input type="checkbox" data-id="VB"> Vicksburg (MS)</label><br>
+      <label><input type="checkbox" data-id="CK"> Chickasaw (OK)</label>
     </section>
 
     <!-- 2012 -->
     <section class="card">
       <h3>2012</h3>
-      <label><input type="checkbox"> El Yunque (PR)</label><br>
-      <label><input type="checkbox"> Chaco Culture (NM)</label><br>
-      <label><input type="checkbox"> Acadia (ME)</label><br>
-      <label><input type="checkbox"> Hawai‘i Volcanoes (HI)</label><br>
-      <label><input type="checkbox"> Denali (AK)</label>
+      <label><input type="checkbox" data-id="EY"> El Yunque (PR)</label><br>
+      <label><input type="checkbox" data-id="CC"> Chaco Culture (NM)</label><br>
+      <label><input type="checkbox" data-id="AC"> Acadia (ME)</label><br>
+      <label><input type="checkbox" data-id="HV"> Hawai‘i Volcanoes (HI)</label><br>
+      <label><input type="checkbox" data-id="DN"> Denali (AK)</label>
     </section>
 
     <!-- 2013 -->
     <section class="card">
       <h3>2013</h3>
-      <label><input type="checkbox"> White Mountain (NH)</label><br>
-      <label><input type="checkbox"> Perry’s Victory (OH)</label><br>
-      <label><input type="checkbox"> Great Basin (NV)</label><br>
-      <label><input type="checkbox"> Fort McHenry (MD)</label><br>
-      <label><input type="checkbox"> Mount Rushmore (SD)</label>
+      <label><input type="checkbox" data-id="WM"> White Mountain (NH)</label><br>
+      <label><input type="checkbox" data-id="PV"> Perry’s Victory (OH)</label><br>
+      <label><input type="checkbox" data-id="GBN"> Great Basin (NV)</label><br>
+      <label><input type="checkbox" data-id="FM"> Fort McHenry (MD)</label><br>
+      <label><input type="checkbox" data-id="MR"> Mount Rushmore (SD)</label>
     </section>
 
     <!-- 2014 -->
     <section class="card">
       <h3>2014</h3>
-      <label><input type="checkbox"> Great Smoky Mountains (TN)</label><br>
-      <label><input type="checkbox"> Shenandoah (VA)</label><br>
-      <label><input type="checkbox"> Arches (UT)</label><br>
-      <label><input type="checkbox"> Great Sand Dunes (CO)</label><br>
-      <label><input type="checkbox"> Everglades (FL)</label>
+      <label><input type="checkbox" data-id="GSM"> Great Smoky Mountains (TN)</label><br>
+      <label><input type="checkbox" data-id="SH"> Shenandoah (VA)</label><br>
+      <label><input type="checkbox" data-id="AR"> Arches (UT)</label><br>
+      <label><input type="checkbox" data-id="GSD"> Great Sand Dunes (CO)</label><br>
+      <label><input type="checkbox" data-id="EV"> Everglades (FL)</label>
     </section>
 
     <!-- 2015 -->
     <section class="card">
       <h3>2015</h3>
-      <label><input type="checkbox"> Homestead (NE)</label><br>
-      <label><input type="checkbox"> Kisatchie (LA)</label><br>
-      <label><input type="checkbox"> Blue Ridge Parkway (NC)</label><br>
-      <label><input type="checkbox"> Bombay Hook (DE)</label><br>
-      <label><input type="checkbox"> Saratoga (NY)</label>
+      <label><input type="checkbox" data-id="HM"> Homestead (NE)</label><br>
+      <label><input type="checkbox" data-id="KS"> Kisatchie (LA)</label><br>
+      <label><input type="checkbox" data-id="BRP"> Blue Ridge Parkway (NC)</label><br>
+      <label><input type="checkbox" data-id="BH"> Bombay Hook (DE)</label><br>
+      <label><input type="checkbox" data-id="ST"> Saratoga (NY)</label>
     </section>
 
     <!-- 2016 -->
     <section class="card">
       <h3>2016</h3>
-      <label><input type="checkbox"> Shawnee (IL)</label><br>
-      <label><input type="checkbox"> Cumberland Gap (KY)</label><br>
-      <label><input type="checkbox"> Harpers Ferry (WV)</label><br>
-      <label><input type="checkbox"> Theodore Roosevelt (ND)</label><br>
-      <label><input type="checkbox"> Fort Moultrie (SC)</label>
+      <label><input type="checkbox" data-id="SW"> Shawnee (IL)</label><br>
+      <label><input type="checkbox" data-id="CG"> Cumberland Gap (KY)</label><br>
+      <label><input type="checkbox" data-id="HF"> Harpers Ferry (WV)</label><br>
+      <label><input type="checkbox" data-id="TR"> Theodore Roosevelt (ND)</label><br>
+      <label><input type="checkbox" data-id="FM2"> Fort Moultrie (SC)</label>
     </section>
 
     <!-- 2017 -->
     <section class="card">
       <h3>2017</h3>
-      <label><input type="checkbox"> Effigy Mounds (IA)</label><br>
-      <label><input type="checkbox"> Frederick Douglass (DC)</label><br>
-      <label><input type="checkbox"> Ozark Riverways (MO)</label><br>
-      <label><input type="checkbox"> Ellis Island (NJ)</label><br>
-      <label><input type="checkbox"> George Rogers Clark (IN)</label>
+      <label><input type="checkbox" data-id="EM"> Effigy Mounds (IA)</label><br>
+      <label><input type="checkbox" data-id="FD"> Frederick Douglass (DC)</label><br>
+      <label><input type="checkbox" data-id="OZ"> Ozark Riverways (MO)</label><br>
+      <label><input type="checkbox" data-id="EI"> Ellis Island (NJ)</label><br>
+      <label><input type="checkbox" data-id="GRC"> George Rogers Clark (IN)</label>
     </section>
 
     <!-- 2018 -->
     <section class="card">
       <h3>2018</h3>
-      <label><input type="checkbox"> Pictured Rocks (MI)</label><br>
-      <label><input type="checkbox"> Apostle Islands (WI)</label><br>
-      <label><input type="checkbox"> Voyageurs (MN)</label><br>
-      <label><input type="checkbox"> Cumberland Island (GA)</label><br>
-      <label><input type="checkbox"> Block Island (RI)</label>
+      <label><input type="checkbox" data-id="PR"> Pictured Rocks (MI)</label><br>
+      <label><input type="checkbox" data-id="AI"> Apostle Islands (WI)</label><br>
+      <label><input type="checkbox" data-id="VG"> Voyageurs (MN)</label><br>
+      <label><input type="checkbox" data-id="CI"> Cumberland Island (GA)</label><br>
+      <label><input type="checkbox" data-id="BI"> Block Island (RI)</label>
     </section>
 
     <!-- 2019 -->
     <section class="card">
       <h3>2019</h3>
-      <label><input type="checkbox"> Lowell (MA)</label><br>
-      <label><input type="checkbox"> American Memorial Park (NMI)</label><br>
-      <label><input type="checkbox"> War in the Pacific (GU)</label><br>
-      <label><input type="checkbox"> San Antonio Missions (TX)</label><br>
-      <label><input type="checkbox"> Frank Church River of No Return (ID)</label>
+      <label><input type="checkbox" data-id="LW"> Lowell (MA)</label><br>
+      <label><input type="checkbox" data-id="AMP"> American Memorial Park (NMI)</label><br>
+      <label><input type="checkbox" data-id="WP"> War in the Pacific (GU)</label><br>
+      <label><input type="checkbox" data-id="SAM"> San Antonio Missions (TX)</label><br>
+      <label><input type="checkbox" data-id="RNR"> River of No Return (ID)</label>
     </section>
 
     <!-- 2020 -->
     <section class="card">
       <h3>2020</h3>
-      <label><input type="checkbox"> National Park of American Samoa (AS)</label><br>
-      <label><input type="checkbox"> Weir Farm (CT)</label><br>
-      <label><input type="checkbox"> Salt River Bay (VI)</label><br>
-      <label><input type="checkbox"> Marsh-Billings-Rockefeller (VT)</label><br>
-      <label><input type="checkbox"> Tallgrass Prairie (KS)</label>
+      <label><input type="checkbox" data-id="AS"> American Samoa (AS)</label><br>
+      <label><input type="checkbox" data-id="WF"> Weir Farm (CT)</label><br>
+      <label><input type="checkbox" data-id="SRB"> Salt River Bay (VI)</label><br>
+      <label><input type="checkbox" data-id="MBR"> Marsh-Billings-Rockefeller (VT)</label><br>
+      <label><input type="checkbox" data-id="TGP"> Tallgrass Prairie (KS)</label>
     </section>
 
     <!-- 2021 -->
     <section class="card">
       <h3>2021</h3>
-      <label><input type="checkbox"> Tuskegee Airmen (AL)</label>
+      <label><input type="checkbox" data-id="TA"> Tuskegee Airmen (AL)</label>
     </section>
 
   </main>
@@ -165,6 +191,95 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+  </script>
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc, 
+      setDoc 
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCk1kUcNl8-U1IW7jL_K3H_Wm2vhaZTCA",
+      authDomain: "plasmaticcoins-server.firebaseapp.com",
+      projectId: "plasmaticcoins-server",
+      storageBucket: "plasmaticcoins-server.firebasestorage.app",
+      messagingSenderId: "148763283032",
+      appId: "1:148763283032:web:e547227225642fa226c42d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox'][data-id]");
+    const totalDisplay = document.getElementById("totalDisplay");
+    const progressBar = document.getElementById("progressBar");
+
+    let currentUser = null;
+
+    function updateProgress() {
+      const total = 56;
+      const collected = [...checkboxes].filter(cb => cb.checked).length;
+
+      totalDisplay.textContent = `${collected} / ${total} collected`;
+      progressBar.style.width = `${(collected / total) * 100}%`;
+    }
+
+    async function saveProgress() {
+      if (!currentUser) return;
+
+      const collected = {};
+      checkboxes.forEach(cb => {
+        collected[cb.dataset.id] = cb.checked;
+      });
+
+      await setDoc(
+        doc(db, "users", currentUser.uid, "collections", "atbQuarters"),
+        collected,
+        { merge: true }
+      );
+    }
+
+    async function loadProgress() {
+      if (!currentUser) return;
+
+      const ref = doc(db, "users", currentUser.uid, "collections", "atbQuarters");
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+        const data = snap.data();
+        checkboxes.forEach(cb => {
+          if (data[cb.dataset.id] === true) {
+            cb.checked = true;
+          }
+        });
+      }
+
+      updateProgress();
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener("change", () => {
+        updateProgress();
+        saveProgress();
+      });
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        alert("You must be signed in to track your ATB collection.");
+        return;
+      }
+
+      currentUser = user;
+      await loadProgress();
+    });
   </script>
 
 </body>
