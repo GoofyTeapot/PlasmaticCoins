@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2026 Semiquincentennial Collection - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../../../img/logo.png">
+  <link rel="stylesheet" href="../../../../css/styles.css" />
+
+  <style>
+    .ribbon-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      background: #0b1720;
+      padding: 0.5rem 0;
+    }
+
+    .ribbon-track {
+      display: flex;
+      gap: 2rem;
+      animation: scrollRibbon 30s linear infinite;
+      will-change: transform;
+    }
+
+    .ribbon-track img {
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.6));
+    }
+
+    .ribbon-wrapper.bottom .ribbon-track {
+      animation-direction: reverse;
+    }
+
+    @keyframes scrollRibbon {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .semiq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .semiq-card {
+      background: #ffffff10;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .semiq-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .semiq-card h3 {
+      margin: 0.5rem 0 0.25rem;
+      font-size: 1rem;
+    }
+
+    .semiq-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .hero small {
+      opacity: 0.8;
+      display: block;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <nav class="nav">
+        <a href="../home/">Home</a>
+        <a href="../about/">About</a>
+        <a href="../contact/">Contact</a>
+        <a href="../inventory/">Inventory</a>
+        <span id="clock"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Top horizontal scrolling ribbon -->
+  <div class="ribbon-wrapper top">
+    <div class="ribbon-track">
+      <!-- duplicate sequence twice for seamless loop -->
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg" alt="Semiquincentennial Nickel Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg" alt="Semiquincentennial Dime Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg" alt="Semiquincentennial Half Dollar Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg" alt="Semiquincentennial Mayflower Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg" alt="Semiquincentennial Revolutionary War Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg" alt="Semiquincentennial Declaration of Independence Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg" alt="Semiquincentennial Constitution Obverse">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg" alt="Semiquincentennial Gettysburg Obverse">
+
+      <!-- repeat -->
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg" alt="">
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <h2>2026 Semiquincentennial Obverse Collection</h2>
+      <p>
+        A visual gallery of the 2026 Semiquincentennial obverse designs, using official U.S. Mint imagery.
+        <small>All images &copy; U.S. Mint (public domain federal works).</small>
+      </p>
+    </section>
+
+    <section class="semiq-grid">
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg" alt="Semiquincentennial Nickel Obverse">
+        <h3>Nickel (D Mint)</h3>
+        <p>2026 Semiquincentennial circulating nickel obverse.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg" alt="Semiquincentennial Dime Obverse">
+        <h3>Dime (D Mint)</h3>
+        <p>2026 Semiquincentennial circulating dime obverse.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg" alt="Semiquincentennial Half Dollar Obverse">
+        <h3>Half Dollar (P Mint)</h3>
+        <p>2026 Semiquincentennial circulating half dollar obverse.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg" alt="Semiquincentennial Mayflower Obverse">
+        <h3>Mayflower (D Mint)</h3>
+        <p>Commemorative Mayflower‑themed obverse design.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg" alt="Semiquincentennial Revolutionary War Obverse">
+        <h3>Revolutionary War (D Mint)</h3>
+        <p>Commemorative Revolutionary War‑themed obverse design.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg" alt="Semiquincentennial Declaration of Independence Obverse">
+        <h3>Declaration of Independence (P Mint)</h3>
+        <p>Commemorative Declaration of Independence obverse design.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg" alt="Semiquincentennial Constitution Obverse">
+        <h3>U.S. Constitution (D Mint)</h3>
+        <p>Commemorative Constitution‑themed obverse design.</p>
+      </article>
+
+      <article class="semiq-card">
+        <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg" alt="Semiquincentennial Gettysburg Obverse">
+        <h3>Gettysburg (P Mint)</h3>
+        <p>Commemorative Gettysburg‑themed obverse design.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Bottom horizontal scrolling ribbon -->
+  <div class="ribbon-wrapper bottom">
+    <div class="ribbon-track">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg" alt="">
+
+      <!-- repeat -->
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Nickel-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Dime-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Half-Dollar-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Mayflower-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Revolutionary-War-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Declaration-Obverse-Unc-P.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Constitution-Obverse-Unc-D.jpg" alt="">
+      <img src="https://www.usmint.gov/content/dam/usmint/image-library/coins/2026/SemiQ-Gettysburg-Obverse-Unc-P.jpg" alt="">
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
