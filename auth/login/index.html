@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Login – Plasmatic Coins</title>
+  <title>Login - Plasmatic Coins</title>
 
   <style>
     :root {
@@ -93,6 +93,7 @@
       .then(() => {
         window.localStorage.removeItem("emailForSignIn");
         status.textContent = "You are now signed in!";
+        window.location.href = "../../in/home/";
       })
       .catch((error) => {
         status.textContent = "Error: " + error.message;
