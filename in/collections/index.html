@@ -18,7 +18,7 @@
       <div id="nav-placeholder"></div>
 
       <script>
-        fetch("/includes/nav.html")
+        fetch("../../includes/nav.html")
         .then(res => res.text())
             .then(html => {
               document.getElementById("nav-placeholder").innerHTML = html;
