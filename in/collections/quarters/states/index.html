@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>State Quarters Checklist - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <nav class="nav">
+        <a href="../home/">Home</a>
+        <a href="../about/">About</a>
+        <a href="../contact/">Contact</a>
+        <a href="../inventory/">Inventory</a>
+        <span id="clock"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>State Quarters Checklist</h2>
+      <p>Track your collection of all 50 U.S. State Quarters (1999–2008).</p>
+    </section>
+
+    <!-- 1999 -->
+    <section class="card">
+      <h3>1999</h3>
+      <label><input type="checkbox"> Delaware</label><br>
+      <label><input type="checkbox"> Pennsylvania</label><br>
+      <label><input type="checkbox"> New Jersey</label><br>
+      <label><input type="checkbox"> Georgia</label><br>
+      <label><input type="checkbox"> Connecticut</label>
+    </section>
+
+    <!-- 2000 -->
+    <section class="card">
+      <h3>2000</h3>
+      <label><input type="checkbox"> Massachusetts</label><br>
+      <label><input type="checkbox"> Maryland</label><br>
+      <label><input type="checkbox"> South Carolina</label><br>
+      <label><input type="checkbox"> New Hampshire</label><br>
+      <label><input type="checkbox"> Virginia</label>
+    </section>
+
+    <!-- 2001 -->
+    <section class="card">
+      <h3>2001</h3>
+      <label><input type="checkbox"> New York</label><br>
+      <label><input type="checkbox"> North Carolina</label><br>
+      <label><input type="checkbox"> Rhode Island</label><br>
+      <label><input type="checkbox"> Vermont</label><br>
+      <label><input type="checkbox"> Kentucky</label>
+    </section>
+
+    <!-- 2002 -->
+    <section class="card">
+      <h3>2002</h3>
+      <label><input type="checkbox"> Tennessee</label><br>
+      <label><input type="checkbox"> Ohio</label><br>
+      <label><input type="checkbox"> Louisiana</label><br>
+      <label><input type="checkbox"> Indiana</label><br>
+      <label><input type="checkbox"> Mississippi</label>
+    </section>
+
+    <!-- 2003 -->
+    <section class="card">
+      <h3>2003</h3>
+      <label><input type="checkbox"> Illinois</label><br>
+      <label><input type="checkbox"> Alabama</label><br>
+      <label><input type="checkbox"> Maine</label><br>
+      <label><input type="checkbox"> Missouri</label><br>
+      <label><input type="checkbox"> Arkansas</label>
+    </section>
+
+    <!-- 2004 -->
+    <section class="card">
+      <h3>2004</h3>
+      <label><input type="checkbox"> Michigan</label><br>
+      <label><input type="checkbox"> Florida</label><br>
+      <label><input type="checkbox"> Texas</label><br>
+      <label><input type="checkbox"> Iowa</label><br>
+      <label><input type="checkbox"> Wisconsin</label>
+    </section>
+
+    <!-- 2005 -->
+    <section class="card">
+      <h3>2005</h3>
+      <label><input type="checkbox"> California</label><br>
+      <label><input type="checkbox"> Minnesota</label><br>
+      <label><input type="checkbox"> Oregon</label><br>
+      <label><input type="checkbox"> Kansas</label><br>
+      <label><input type="checkbox"> West Virginia</label>
+    </section>
+
+    <!-- 2006 -->
+    <section class="card">
+      <h3>2006</h3>
+      <label><input type="checkbox"> Nevada</label><br>
+      <label><input type="checkbox"> Nebraska</label><br>
+      <label><input type="checkbox"> Colorado</label><br>
+      <label><input type="checkbox"> North Dakota</label><br>
+      <label><input type="checkbox"> South Dakota</label>
+    </section>
+
+    <!-- 2007 -->
+    <section class="card">
+      <h3>2007</h3>
+      <label><input type="checkbox"> Montana</label><br>
+      <label><input type="checkbox"> Washington</label><br>
+      <label><input type="checkbox"> Idaho</label><br>
+      <label><input type="checkbox"> Wyoming</label><br>
+      <label><input type="checkbox"> Utah</label>
+    </section>
+
+    <!-- 2008 -->
+    <section class="card">
+      <h3>2008</h3>
+      <label><input type="checkbox"> Oklahoma</label><br>
+      <label><input type="checkbox"> New Mexico</label><br>
+      <label><input type="checkbox"> Arizona</label><br>
+      <label><input type="checkbox"> Alaska</label><br>
+      <label><input type="checkbox"> Hawaii</label>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
