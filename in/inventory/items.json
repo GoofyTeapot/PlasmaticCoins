@@ -9,5 +9,16 @@
     "quantity": 1,
     "photo": "https://storage.googleapis.com/images.pricecharting.com/2f6e14631697aca1dee5bfbe06dd2af892a137c75c090e955b26bbf7c4ed6d32/240.jpg",
     "description": "‘In Cod We Trust’ die chip error coin with strong details."
+  },
+  {
+    "id": 2,
+    "name": "6 Asst. 2009-PS Pennies",
+    "price": 12.99,
+    "shipping": 7.99,
+    "total": 20.98,
+    "grade": "AU-50 thru MS-64",
+    "quantity": 2,
+    "photo": "https://storage.googleapis.com/images.pricecharting.com/he2lug6n5iaiibjv/240.jpg",
+    "description": "A 6-pack of assorted 2009-P&S pennies. Grades between AU-50 and MS-64"
   }
 ]
