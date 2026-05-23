@@ -24,13 +24,6 @@ body {
   line-height: 1.6;
 }
 
-/* Global white text with thin black outline */
-body, body * {
-  -webkit-text-stroke: .15px #fff;
-  text-shadow: 0 0 8px rgba(0,0,0,0.4); /* keep your glow/shadow */
-}
-
-
 /* Blurred background image */
 body::before {
   content: "";
