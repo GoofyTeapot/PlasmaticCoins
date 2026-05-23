@@ -9,11 +9,12 @@
   <a href="/PlasmaticCoins/in/inventory/">Inventory</a>
   <a href="/PlasmaticCoins/in/collections/">Collections</a>
   <span id="clock"></span>
+  <span id="userStatus"></span>
 </nav>
 
 <style>
   .purchase-banner {
-    background: #FFD500; /* bright yellow */
+    background: #FFD500;
     color: black;
     font-weight: bold;
     text-align: center;
@@ -21,5 +22,34 @@
     font-size: 16px;
     border-bottom: 2px solid black;
     letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .nav a {
+    text-decoration: none;
+  }
+
+  #clock {
+    margin-left: auto;
+    font-weight: bold;
+  }
+
+  #userStatus {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  #userStatus a {
+    color: #4da3ff;
+    text-decoration: none;
+  }
+
+  #userStatus a:hover {
+    text-decoration: underline;
   }
 </style>
