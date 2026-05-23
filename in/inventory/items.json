@@ -7,8 +7,12 @@
     "total": 87.98,
     "grade": "MS-64",
     "quantity": 1,
+    "things-to-know": [
+      "great-for-collectors",
+      "price-comparable"
+    ],
     "photo": "https://storage.googleapis.com/images.pricecharting.com/a0f2be5ea516df15542cdcaa125b424fea58abfb2fa8f401017c0ac0f1f08eb2/240.jpg",
-    "description": "‘In Cod We Trust’ die chip error coin with strong details."
+    "description": "‘In Cod We Trust’ die chip error coin with strong details. Great for collectors!"
   },
   {
     "id": 2,
@@ -18,6 +22,9 @@
     "total": 20.98,
     "grade": "AU-50 thru MS-64",
     "quantity": 2,
+    "things-to-know": [
+      "great-for-collectors"
+    ],
     "photo": "https://storage.googleapis.com/images.pricecharting.com/he2lug6n5iaiibjv/240.jpg",
     "description": "A 6-pack of assorted 2009-P&D pennies. Grades between AU-50 and MS-64"
   }
