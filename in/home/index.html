@@ -6,89 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../../img/logo.png">
   <link rel="stylesheet" href="../../css/styles.css" />
-
-  <style>
-    /* --- Extra Styling For Expanded Sections --- */
-
-    .section-title {
-      font-size: 2rem;
-      margin-top: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .featured-grid, .education-grid, .news-grid, .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .featured-card, .edu-card, .news-card, .testimonial-card {
-      background: #ffffff10;
-      padding: 20px;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      border: 1px solid #ffffff20;
-      transition: 0.2s;
-    }
-
-    .featured-card:hover, .edu-card:hover, .news-card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Modal */
-    #imgModal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #imgModal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
-
-    /* FAQ */
-    .faq-item {
-      background: #ffffff10;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    .faq-answer {
-      display: none;
-      margin-top: 10px;
-      color: #ddd;
-    }
-
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -124,110 +41,141 @@
       </button>
     </section>
 
-    <!-- Featured Collections -->
-    <h2 class="section-title">Featured Collections</h2>
-    <div class="featured-grid">
-      <div class="featured-card">
-        <h3>Silver Bullion</h3>
-        <p>Explore our growing collection of silver rounds, bars, and government‑minted bullion.</p>
-      </div>
-      <div class="featured-card">
-        <h3>Rare Pennies</h3>
-        <p>From wheat cents to Indian Heads — discover the history of American small cents.</p>
-      </div>
-      <div class="featured-card">
-        <h3>Commemoratives</h3>
-        <p>Special edition coins celebrating major events, anniversaries, and historical figures.</p>
-      </div>
-    </div>
+    <!-- ORIGINAL CARDS -->
+    <section class="card-grid">
+      <article class="card">
+        <h3>Card One</h3>
+        <p>Some sample text for this card.</p>
+      </article>
+      <article class="card">
+        <h3>Card Two</h3>
+        <p>Another bit of placeholder content.</p>
+      </article>
+      <article class="card">
+        <h3>Card Three</h3>
+        <p>More text to fill out the layout.</p>
+      </article>
+    </section>
 
-    <!-- Education Section -->
-    <h2 class="section-title">Numismatics Education</h2>
-    <div class="education-grid">
-      <div class="edu-card">
-        <h3>How Coins Are Made</h3>
-        <p>Learn the minting process from blank planchets to fully struck coins.</p>
-      </div>
-      <div class="edu-card">
-        <h3>Grading Basics</h3>
-        <p>Understand the Sheldon scale and how collectors determine coin condition.</p>
-      </div>
-      <div class="edu-card">
+    <!-- EXPANDED CONTENT USING YOUR EXISTING CARD TEMPLATE -->
+
+    <h2 style="margin-top:40px;">More Features</h2>
+    <section class="card-grid">
+      <article class="card">
+        <h3>Coin Roll Hunting</h3>
+        <p>Learn strategies for finding silver, wheat cents, and rare varieties in bank rolls.</p>
+      </article>
+
+      <article class="card">
+        <h3>Understanding Mintmarks</h3>
+        <p>A quick guide to identifying mintmarks and what they mean for coin rarity.</p>
+      </article>
+
+      <article class="card">
+        <h3>How to Store Coins</h3>
+        <p>Protect your collection using flips, tubes, albums, and proper handling techniques.</p>
+      </article>
+
+      <article class="card">
+        <h3>Spot Price Tracking</h3>
+        <p>Why silver and gold prices change daily — and how it affects your collection.</p>
+      </article>
+
+      <article class="card">
+        <h3>Beginner Collector Tips</h3>
+        <p>Start your numismatic journey with affordable sets and easy-to-find coins.</p>
+      </article>
+
+      <article class="card">
+        <h3>Rare Penny Checklist</h3>
+        <p>Key dates and varieties every collector should know — from 1909-S VDB to 1955 DDO.</p>
+      </article>
+    </section>
+
+    <h2 style="margin-top:40px;">Numismatic Education</h2>
+    <section class="card-grid">
+      <article class="card">
+        <h3>The Minting Process</h3>
+        <p>From blank planchets to fully struck coins — how modern mints operate.</p>
+      </article>
+
+      <article class="card">
+        <h3>Coin Grading Basics</h3>
+        <p>An introduction to the Sheldon scale and how graders determine condition.</p>
+      </article>
+
+      <article class="card">
         <h3>Metal Composition</h3>
-        <p>Discover how metal content affects value, rarity, and collectibility.</p>
-      </div>
-    </div>
+        <p>How copper, nickel, silver, and gold content influence value and rarity.</p>
+      </article>
 
-    <!-- News Section -->
-    <h2 class="section-title">Latest News & Updates</h2>
-    <div class="news-grid">
-      <div class="news-card">
-        <h3>New Inventory Added</h3>
-        <p>We’ve added over 30 new coins to the shop — including silver dimes and wheat rolls.</p>
-      </div>
-      <div class="news-card">
-        <h3>Semiquincentennial Project</h3>
-        <p>Track your 250th anniversary coin checklist with our new interactive page.</p>
-      </div>
-      <div class="news-card">
-        <h3>Website Improvements</h3>
-        <p>Navigation, authentication, and UI updates rolled out for a smoother experience.</p>
-      </div>
-    </div>
+      <article class="card">
+        <h3>Die Varieties</h3>
+        <p>Learn about doubled dies, repunched mintmarks, and other collectible errors.</p>
+      </article>
 
-    <!-- Gallery -->
-    <h2 class="section-title">Coin Gallery</h2>
-    <div class="gallery-grid">
-      <img src="../../img/gallery1.jpg" onclick="openModal(this.src)">
-      <img src="../../img/gallery2.jpg" onclick="openModal(this.src)">
-      <img src="../../img/gallery3.jpg" onclick="openModal(this.src)">
-      <img src="../../img/gallery4.jpg" onclick="openModal(this.src)">
-    </div>
+      <article class="card">
+        <h3>U.S. Mint History</h3>
+        <p>A timeline of major changes in American coinage from 1792 to today.</p>
+      </article>
 
-    <div id="imgModal" onclick="this.style.display='none'">
-      <img id="modalImg">
-    </div>
+      <article class="card">
+        <h3>Coin Photography</h3>
+        <p>Tips for capturing sharp, detailed images of your collection.</p>
+      </article>
+    </section>
 
-    <!-- Testimonials -->
-    <h2 class="section-title">Collector Testimonials</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>"Amazing service and great coins! Highly recommend." — J. Ramirez</p>
-      </div>
-      <div class="testimonial-card">
-        <p>"The best coin site I’ve used. Clean UI and fast updates." — A. Thompson</p>
-      </div>
-      <div class="testimonial-card">
-        <p>"Found rare pennies I’ve been hunting for years." — M. Collins</p>
-      </div>
-    </div>
+    <h2 style="margin-top:40px;">Coin Gallery</h2>
+    <section class="card-grid">
+      <article class="card">
+        <h3>Silver Dimes</h3>
+        <p>Images of Roosevelt and Mercury dimes from our collection.</p>
+      </article>
 
-    <!-- FAQ -->
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <div class="faq-item" onclick="toggleFAQ(this)">
-      <strong>How do I start collecting coins?</strong>
-      <div class="faq-answer">Start with circulated coins, learn grading basics, and explore affordable sets.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFAQ(this)">
-      <strong>Do you buy coins?</strong>
-      <div class="faq-answer">Yes! Contact us through the form on our Contact page.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFAQ(this)">
-      <strong>How do I store my coins?</strong>
-      <div class="faq-answer">Use flips, tubes, or slabs — and avoid touching coins with bare hands.</div>
-    </div>
+      <article class="card">
+        <h3>Wheat Cents</h3>
+        <p>A showcase of early Lincoln cents including key dates.</p>
+      </article>
+
+      <article class="card">
+        <h3>Nickel Series</h3>
+        <p>Jefferson, Buffalo, and Liberty Head nickels displayed in high detail.</p>
+      </article>
+
+      <article class="card">
+        <h3>Commemoratives</h3>
+        <p>Modern and classic commemorative coins with historical significance.</p>
+      </article>
+    </section>
+
+    <h2 style="margin-top:40px;">Frequently Asked Questions</h2>
+    <section class="card-grid">
+      <article class="card">
+        <h3>How do I start collecting?</h3>
+        <p>Begin with circulated coins, learn grading basics, and explore affordable sets.</p>
+      </article>
+
+      <article class="card">
+        <h3>Do you buy coins?</h3>
+        <p>Yes — visit our Contact page to submit photos and details.</p>
+      </article>
+
+      <article class="card">
+        <h3>How do I store coins safely?</h3>
+        <p>Use flips, tubes, or slabs and avoid touching coins with bare hands.</p>
+      </article>
+
+      <article class="card">
+        <h3>What are key dates?</h3>
+        <p>Coins with low mintages or rare varieties that collectors seek out.</p>
+      </article>
+    </section>
 
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p>&copy; Plasmatic Coins Co.</p>
-      <p>Follow us on social media:</p>
-      <p>
-        <a href="#">Instagram</a> • 
-        <a href="#">YouTube</a> • 
-        <a href="#">Discord</a>
-      </p>
     </div>
   </footer>
 
@@ -240,16 +188,6 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
-
-    function openModal(src) {
-      document.getElementById("modalImg").src = src;
-      document.getElementById("imgModal").style.display = "flex";
-    }
-
-    function toggleFAQ(el) {
-      const ans = el.querySelector(".faq-answer");
-      ans.style.display = ans.style.display === "block" ? "none" : "block";
-    }
   </script>
 
   <!-- Firebase Auth + Firestore -->
