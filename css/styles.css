@@ -24,17 +24,12 @@ body {
   line-height: 1.6;
 }
 
-/* Remove global stroke so we can control it properly */
+/* Global white text with thin black outline */
 body, body * {
-  color: #000 !important;
-  text-shadow: 0 0 8px rgba(0,0,0,0.4);
+  color: #fff !important;
+  -webkit-text-stroke: 4px #000;
+  text-shadow: 0 0 8px rgba(0,0,0,0.4); /* keep your glow/shadow */
 }
-
-/* Large text (40px+) gets a thick outline */
-h1, h2, .hero h2, .logo {
-  -webkit-text-stroke: 1.2px #fff !important;
-}
-
 
 
 /* Blurred background image */
@@ -214,4 +209,4 @@ body::before {
     .paypal-btn:active {
       transform: translateY(0);
       box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-    }
+    } change it so: large text 40px+ = 4px outline, smaller text = 0.4px outline
