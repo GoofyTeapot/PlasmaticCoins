@@ -36,21 +36,6 @@ h1, h2, .hero h2, .logo {
   -webkit-text-stroke: 4px #000 !important;
 }
 
-/* Medium text (20–39px) — optional, smoother look */
-h3, h4 {
-  -webkit-text-stroke: 1.5px #000 !important;
-}
-
-/* Buttons should stay readable */
-button, .btn-primary {
-  -webkit-text-stroke: 0.8px #000 !important;
-}
-
-/* Small UI text (paragraphs, nav, footer) */
-p, a, li, small, .nav a, .site-footer {
-  -webkit-text-stroke: 0.4px #000 !important;
-}
-
 
 
 /* Blurred background image */
