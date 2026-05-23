@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beginner Collector Tips - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Beginner Collector Tips</h2>
+      <p>Start your numismatic journey with affordable sets and easy-to-find coins.</p>
+      <button class="btn-primary">Start Collecting</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Start With Affordable Sets</h3>
+        <p>
+          Begin with low-cost collections like state quarters, national park quarters, 
+          or Jefferson nickels. These sets are easy to complete and help you learn 
+          mintmarks, dates, and varieties.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Look for Coins in Circulation</h3>
+        <p>
+          Check your pocket change, ask banks for rolls, and search customer-wrapped rolls. 
+          You can find wheat cents, older nickels, and even silver coins without spending extra.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Learn the Basics</h3>
+        <p>
+          Understanding grading, mintmarks, and coin composition will help you spot 
+          valuable finds. Start simple and build your knowledge as your collection grows.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 PlasmaticCoins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
