@@ -82,6 +82,46 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 14px rgba(0,0,0,0.35);
     }
+
+    .purchase-banner {
+    background: #FFD500;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 16px;
+    border-bottom: 2px solid black;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .nav a {
+    text-decoration: none;
+  }
+
+  #clock {
+    margin-left: auto;
+    font-weight: bold;
+  }
+
+  #userStatus {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  #userStatus a {
+    color: #4da3ff;
+    text-decoration: none;
+  }
+
+  #userStatus a:hover {
+    text-decoration: underline;
+  }
   </style>
 </head>
 
@@ -93,6 +133,10 @@
         Plasmatic Coins
       </h1>
 
+      <div class="purchase-banner">
+        PURCHASES ARE UNAVAILABLE
+      </div>
+      
       <nav class="nav">
         <a href="/PlasmaticCoins/in/home/">Home</a>
         <a href="/PlasmaticCoins/in/about/">About</a>
