@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spot Price Tracking - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Spot Price Tracking</h2>
+      <p>Why silver and gold prices change daily — and how it affects your collection.</p>
+      <button class="btn-primary">View Live Prices</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>What Is Spot Price?</h3>
+        <p>
+          The spot price is the current market value of precious metals like silver and gold. 
+          It fluctuates constantly based on global supply, demand, and economic conditions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Why Prices Change</h3>
+        <p>
+          Precious metal prices react to inflation, interest rates, geopolitical events, 
+          and investor demand. Even small changes can impact the value of your collection.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>How It Affects Collectors</h3>
+        <p>
+          Bullion coins closely follow spot price, while numismatic coins depend more on rarity 
+          and condition. Tracking spot helps you buy smart and understand market trends.
+        </p>
+      </article>
+    </section>
+
+    <!-- ../../stories/ -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 PlasmaticCoins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
