@@ -26,8 +26,7 @@ body {
 
 /* Global white text with thin black outline */
 body, body * {
-  color: #fff !important;
-  -webkit-text-stroke: .15px #000;
+  -webkit-text-stroke: .15px #fff;
   text-shadow: 0 0 8px rgba(0,0,0,0.4); /* keep your glow/shadow */
 }
 
