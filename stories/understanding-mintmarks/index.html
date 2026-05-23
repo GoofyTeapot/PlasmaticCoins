@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Understanding Mintmarks - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Understanding Mintmarks</h2>
+      <p>A quick guide to identifying mintmarks and what they mean for coin rarity.</p>
+      <button class="btn-primary">Learn More</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>What Are Mintmarks?</h3>
+        <p>
+          Mintmarks are small letters on coins that show where they were made. 
+          Common U.S. mintmarks include <strong>P</strong> (Philadelphia), 
+          <strong>D</strong> (Denver), <strong>S</strong> (San Francisco), 
+          and <strong>W</strong> (West Point).
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Why Mintmarks Matter</h3>
+        <p>
+          Some mints produced fewer coins in certain years, making those mintmarked coins 
+          more valuable. For example, low‑mintage San Francisco coins can be highly collectible.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Where to Find Them</h3>
+        <p>
+          Mintmarks are usually found on the obverse (front) near the date, but older coins 
+          may place them on the reverse. Learning each coin type’s mintmark location helps 
+          you spot rare varieties quickly.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 PlasmaticCoins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
