@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rare Penny Checklist - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Rare Penny Checklist</h2>
+      <p>Key dates and varieties every collector should know — from 1909-S VDB to 1955 DDO.</p>
+      <button class="btn-primary">View Key Dates</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Key Date Pennies</h3>
+        <p>
+          Some pennies were minted in extremely low quantities, making them highly valuable. 
+          Must‑know dates include the <strong>1909‑S VDB</strong>, <strong>1914‑D</strong>, 
+          and <strong>1931‑S</strong>.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Famous Doubled Dies</h3>
+        <p>
+          Dramatic doubled dies like the <strong>1955 DDO</strong>, <strong>1969‑S DDO</strong>, 
+          and <strong>1972 DDO</strong> are among the most sought‑after varieties in the hobby.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Other Valuable Varieties</h3>
+        <p>
+          Look for repunched mintmarks, missing initials, and transitional errors. 
+          Popular finds include the <strong>1922 No D</strong> and the 
+          <strong>1983 DDR</strong>.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 PlasmaticCoins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
