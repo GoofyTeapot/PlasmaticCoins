@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>How to Store Coins - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>How to Store Coins</h2>
+      <p>Protect your collection using flips, tubes, albums, and proper handling techniques.</p>
+      <button class="btn-primary">Start Protecting</button>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Use Proper Holders</h3>
+        <p>
+          Store coins in 2×2 flips, capsules, or tubes to prevent scratches and exposure to air. 
+          Avoid PVC holders, which can damage coins over time.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Handle Coins Correctly</h3>
+        <p>
+          Always hold coins by the edges to avoid fingerprints. 
+          Wearing cotton or nitrile gloves helps prevent accidental damage.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Organize & Label</h3>
+        <p>
+          Keep your collection organized in boxes or albums. 
+          Label each coin with its date, mintmark, grade, and any special notes.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 PlasmaticCoins</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("clock").textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
