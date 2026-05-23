@@ -21,7 +21,7 @@
       padding: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       position: relative;
-      min-height: 420px;
+      min-height: 460px;
     }
 
     .item-img {
@@ -56,6 +56,35 @@
       margin-bottom: 6px;
     }
 
+    /* ---------------------- */
+    /*      PILLS SYSTEM      */
+    /* ---------------------- */
+
+    .pill-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 10px 0;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+      display: inline-block;
+    }
+
+    .pill.collector {
+      background: rgba(255, 255, 0, 0.4); /* 40% transparent yellow */
+    }
+
+    .pill.price {
+      background: rgba(0, 255, 0, 0.4); /* 40% transparent green */
+    }
+
+    /* Buttons */
     .paypal-btn, .order-btn {
       position: absolute;
       bottom: 12px;
@@ -84,44 +113,15 @@
     }
 
     .purchase-banner {
-    background: #FFD500;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 16px;
-    border-bottom: 2px solid black;
-    letter-spacing: 1px;
-  }
-
-  .nav {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .nav a {
-    text-decoration: none;
-  }
-
-  #clock {
-    margin-left: auto;
-    font-weight: bold;
-  }
-
-  #userStatus {
-    margin-left: 10px;
-    font-weight: bold;
-  }
-
-  #userStatus a {
-    color: #4da3ff;
-    text-decoration: none;
-  }
-
-  #userStatus a:hover {
-    text-decoration: underline;
-  }
+      background: #FFD500;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 16px;
+      border-bottom: 2px solid black;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 
@@ -154,10 +154,6 @@
       <p>Browse items currently available for purchase.</p>
     </section>
 
-    <div class="purchase-banner">
-      PURCHASES ARE UNAVAILABLE
-    </div>
-
     <section class="item-list" id="itemList"></section>
   </main>
 
@@ -185,9 +181,28 @@
           const tab = document.createElement("div");
           tab.className = "item-tab";
 
+          /* Build pills dynamically */
+          let pillsHTML = "";
+          if (item["things-to-know"] && item["things-to-know"].length > 0) {
+            pillsHTML += `<div class="pill-container">`;
+
+            item["things-to-know"].forEach(tag => {
+              if (tag === "great-for-collectors") {
+                pillsHTML += `<span class="pill collector">Great for Collectors!</span>`;
+              }
+              if (tag === "price-comparable") {
+                pillsHTML += `<span class="pill price">Comparable Price!</span>`;
+              }
+            });
+
+            pillsHTML += `</div>`;
+          }
+
           tab.innerHTML = `
             <img src="${item.photo}" class="item-img" alt="${item.name}">
             <h3>${item.name}</h3>
+
+            ${pillsHTML}
 
             <p class="price">Price: $${item.price.toFixed(2)}</p>
             <p class="price">Shipping: $${item.shipping.toFixed(2)}</p>
