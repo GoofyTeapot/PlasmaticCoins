@@ -26,14 +26,13 @@ body {
 
 /* Remove global stroke so we can control it properly */
 body, body * {
-  color: #fff !important;
-  -webkit-text-stroke: 0.4px #000; /* default for small text */
+  color: #000 !important;
   text-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
 
 /* Large text (40px+) gets a thick outline */
 h1, h2, .hero h2, .logo {
-  -webkit-text-stroke: 4px #000 !important;
+  -webkit-text-stroke: 1.2px #fff !important;
 }
 
 
