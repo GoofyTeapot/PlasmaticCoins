@@ -24,12 +24,33 @@ body {
   line-height: 1.6;
 }
 
-/* Global white text with thin black outline */
+/* Remove global stroke so we can control it properly */
 body, body * {
   color: #fff !important;
-  -webkit-text-stroke: 4px #000;
-  text-shadow: 0 0 8px rgba(0,0,0,0.4); /* keep your glow/shadow */
+  -webkit-text-stroke: 0.4px #000; /* default for small text */
+  text-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
+
+/* Large text (40px+) gets a thick outline */
+h1, h2, .hero h2, .logo {
+  -webkit-text-stroke: 4px #000 !important;
+}
+
+/* Medium text (20–39px) — optional, smoother look */
+h3, h4 {
+  -webkit-text-stroke: 1.5px #000 !important;
+}
+
+/* Buttons should stay readable */
+button, .btn-primary {
+  -webkit-text-stroke: 0.8px #000 !important;
+}
+
+/* Small UI text (paragraphs, nav, footer) */
+p, a, li, small, .nav a, .site-footer {
+  -webkit-text-stroke: 0.4px #000 !important;
+}
+
 
 
 /* Blurred background image */
