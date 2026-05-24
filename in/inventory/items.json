@@ -1,31 +1,46 @@
-[
-  {
-    "id": 1,
-    "name": "2023‑D Jovita Idar Quarter (IN COD WE TRUST ERROR!!)",
-    "price": 79.99,
-    "shipping": 7.99,
-    "total": 87.98,
-    "grade": "MS-64",
-    "quantity": 1,
-    "things-to-know": [
-      "great-for-collectors",
-      "price-comparable"
-    ],
-    "photo": "https://storage.googleapis.com/images.pricecharting.com/a0f2be5ea516df15542cdcaa125b424fea58abfb2fa8f401017c0ac0f1f08eb2/240.jpg",
-    "description": "‘In Cod We Trust’ die chip error coin with strong details. Great for collectors!"
-  },
-  {
-    "id": 2,
-    "name": "6 Asst. 2009-PD Pennies",
-    "price": 12.99,
-    "shipping": 7.99,
-    "total": 20.98,
-    "grade": "AU-50 thru MS-64",
-    "quantity": 2,
-    "things-to-know": [
-      "great-for-collectors"
-    ],
-    "photo": "https://storage.googleapis.com/images.pricecharting.com/he2lug6n5iaiibjv/240.jpg",
-    "description": "A 6-pack of assorted 2009-P&D pennies. Grades between AU-50 and MS-64"
-  }
-]
+{
+  "full-collections": [
+    {
+      "id": 101,
+      "name": "Full Westward Journey Collection",
+      "price": 49.99,
+      "shipping": 7.99,
+      "total": 58.98,
+      "grade": "Mixed AU–MS",
+      "quantity": 1,
+      "things-to-know": ["great-for-collectors"],
+      "photo": "https://storage.googleapis.com/images.pricecharting.com/bf66693a6ef960a98aba2dc829e9a123e48b0f5b5d88d8afb4ca982c1ad3a6bd/240.jpg",
+      "description": "Complete Westward Journey nickel set."
+    }
+  ],
+
+  "individual-coins": [
+    {
+      "id": 201,
+      "name": "2023‑D Jovita Idar Quarter (IN COD WE TRUST ERROR!!)",
+      "price": 79.99,
+      "shipping": 7.99,
+      "total": 87.98,
+      "grade": "MS-64",
+      "quantity": 1,
+      "things-to-know": ["great-for-collectors", "price-comparable"],
+      "photo": "https://storage.googleapis.com/images.pricecharting.com/a0f2be5ea516df15542cdcaa125b424fea58abfb2fa8f401017c0ac0f1f08eb2/240.jpg",
+      "description": "‘In Cod We Trust’ die chip error coin with strong details. Great for collectors!"
+    }
+  ],
+
+  "packs-of-coins": [
+    {
+      "id": 301,
+      "name": "6 Asst. 2009-PD Pennies",
+      "price": 12.99,
+      "shipping": 7.99,
+      "total": 20.98,
+      "grade": "Mixed AU–MS",
+      "quantity": 2,
+      "things-to-know": ["great-for-collectors"],
+      "photo": "https://storage.googleapis.com/images.pricecharting.com/he2lug6n5iaiibjv/240.jpg",
+      "description": "A 6-pack of assorted 2009-P&D pennies. Grades between AU-50 and MS-64"
+    }
+  ]
+}
