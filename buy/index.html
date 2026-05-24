@@ -120,9 +120,11 @@
   </footer>
 
   <script>
-    // Extract item ID from URL path
-    const path = window.location.pathname.split("/").filter(Boolean);
-    const itemId = path[path.length - 1];
+    // Extract ID from original URL (GitHub Pages safe)
+    const url = window.location.href;
+    const match = url.match(/buy\/(\d+)/);
+    const itemId = match ? match[1] : null;
+
 
     fetch("/PlasmaticCoins/in/inventory/items.json")
       .then(res => res.json())
