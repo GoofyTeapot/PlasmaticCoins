@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coin Lookup - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Coin Lookup</h2>
+      <p>Enter a PCGS Number and Grade to retrieve CoinFacts data.</p>
+    </section>
+
+    <section>
+      <form id="lookupForm">
+        <label>PCGS Number:</label><br>
+        <input type="text" id="pcgsNumber" required><br><br>
+
+        <label>Grade Number (e.g., 55, 66, 70):</label><br>
+        <input type="text" id="gradeNo" required><br><br>
+
+        <label>Plus Grade:</label><br>
+        <select id="plus">
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select><br><br>
+
+        <button type="submit" class="btn-primary">Lookup Coin</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>Result</h3>
+      <pre id="resultBox">{}</pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("lookupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const pcgsNumber = document.getElementById("pcgsNumber").value;
+      const gradeNo = document.getElementById("gradeNo").value;
+      const plus = document.getElementById("plus").value;
+
+      const url = `https://pcgs-proxy.simplyaverage0.workers.dev/coindetail?pcgsNumber=${pcgsNumber}&gradeNo=${gradeNo}&plus=${plus}`;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      document.getElementById("resultBox").textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
