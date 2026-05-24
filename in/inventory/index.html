@@ -13,6 +13,7 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       margin-top: 30px;
+      align-items: stretch;
     }
 
     .item-tab {
@@ -21,6 +22,9 @@
       padding: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .item-img {
@@ -90,7 +94,7 @@
     .button-row {
       display: flex;
       justify-content: space-between;
-      margin-top: 14px;
+      margin-top: auto;
     }
 
     .paypal-btn, .order-btn {
@@ -155,12 +159,20 @@
   <main class="container">
     <section class="hero">
       <h2>Our Inventory</h2>
-      <p>
-        You may purchase our selection of coins for your collections, or for other uses!
-      </p>
+      <p>You may purchase our selection of coins for your collections, or for other uses!</p>
     </section>
 
-    <section class="item-list" id="itemList"></section>
+    <h2>All Items</h2>
+    <section class="item-list" id="allItems"></section>
+
+    <h2>Full Collections</h2>
+    <section class="item-list" id="fullCollections"></section>
+
+    <h2>Individual Coins</h2>
+    <section class="item-list" id="individualCoins"></section>
+
+    <h2>Packs of Coins</h2>
+    <section class="item-list" id="packsOfCoins"></section>
   </main>
 
   <footer class="site-footer">
@@ -178,60 +190,60 @@
     setInterval(updateClock, 1000);
     updateClock();
 
+    function createItemCard(item) {
+      let pillsHTML = "";
+      if (item["things-to-know"]) {
+        pillsHTML += `<div class="pill-container">`;
+        item["things-to-know"].forEach(tag => {
+          if (tag === "great-for-collectors") pillsHTML += `<span class="pill collector">Great for Collectors!</span>`;
+          if (tag === "price-comparable") pillsHTML += `<span class="pill price">Comparable Price!</span>`;
+        });
+        pillsHTML += `</div>`;
+      }
+
+      return `
+        <div class="item-tab">
+          <img src="${item.photo}" class="item-img" alt="${item.name}">
+          <h3>${item.name}</h3>
+
+          ${pillsHTML}
+
+          <p class="price">Price: $${item.price.toFixed(2)}</p>
+          <p class="price">Shipping: $${item.shipping.toFixed(2)}</p>
+          <p class="price">Total: $${item.total.toFixed(2)}</p>
+
+          <p class="qty">Grade: ${item.grade}</p>
+          <p class="qty">Quantity: ${item.quantity}</p>
+
+          <p>${item.description}</p>
+
+          <div class="button-row">
+            <a href="https://paypal.me/PlasmaticCoins" target="_blank" class="paypal-btn">Pay with PayPal</a>
+            <a href="/PlasmaticCoins/purchase/${item.id}/" target="_blank" class="order-btn">Order Now</a>
+          </div>
+        </div>
+      `;
+    }
+
     fetch("items.json?v=" + Date.now())
       .then(res => res.json())
-      .then(items => {
-        const container = document.getElementById("itemList");
+      .then(data => {
+        const allItems = document.getElementById("allItems");
+        const fullCollections = document.getElementById("fullCollections");
+        const individualCoins = document.getElementById("individualCoins");
+        const packsOfCoins = document.getElementById("packsOfCoins");
 
-        items.forEach(item => {
-          const tab = document.createElement("div");
-          tab.className = "item-tab";
+        function addItems(list, items) {
+          items.forEach(item => {
+            const card = createItemCard(item);
+            list.innerHTML += card;
+            allItems.innerHTML += card;
+          });
+        }
 
-          /* Build pills dynamically */
-          let pillsHTML = "";
-          if (item["things-to-know"] && item["things-to-know"].length > 0) {
-            pillsHTML += `<div class="pill-container">`;
-
-            item["things-to-know"].forEach(tag => {
-              if (tag === "great-for-collectors") {
-                pillsHTML += `<span class="pill collector">Great for Collectors!</span>`;
-              }
-              if (tag === "price-comparable") {
-                pillsHTML += `<span class="pill price">Comparable Price!</span>`;
-              }
-            });
-
-            pillsHTML += `</div>`;
-          }
-
-          tab.innerHTML = `
-            <img src="${item.photo}" class="item-img" alt="${item.name}">
-            <h3>${item.name}</h3>
-
-            ${pillsHTML}
-
-            <p class="price">Price: $${item.price.toFixed(2)}</p>
-            <p class="price">Shipping: $${item.shipping.toFixed(2)}</p>
-            <p class="price">Total: $${item.total.toFixed(2)}</p>
-
-            <p class="qty">Grade: ${item.grade}</p>
-            <p class="qty">Quantity: ${item.quantity}</p>
-
-            <p>${item.description}</p>
-
-            <div class="button-row">
-              <a href="https://paypal.me/PlasmaticCoins" target="_blank" class="paypal-btn">
-                Pay with PayPal
-              </a>
-
-              <a href="https://goofyteapot.github.io/PlasmaticCoins/purchase/${item.id}/" target="_blank" class="order-btn">
-                Order Now
-              </a>
-            </div>
-          `;
-
-          container.appendChild(tab);
-        });
+        addItems(fullCollections, data["full-collections"]);
+        addItems(individualCoins, data["individual-coins"]);
+        addItems(packsOfCoins, data["packs-of-coins"]);
       });
   </script>
 </body>
