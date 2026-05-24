@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Get the actual path GitHub Pages thinks you're on
     const path = window.location.pathname;
 
-    // If URL starts with /PlasmaticCoins/buy/
+    // Only intercept /PlasmaticCoins/buy/*
     if (path.startsWith("/PlasmaticCoins/buy/")) {
-      // Preserve real query string and hash
-      const qs = window.location.search;
-      const hash = window.location.hash;
 
-      // Redirect to the dynamic buy page
-      window.location.replace("/PlasmaticCoins/buy/index.html" + qs + hash);
+      // Load the dynamic buy page WITHOUT changing the URL
+      fetch("/PlasmaticCoins/buy/index.html")
+        .then(res => res.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
     }
   </script>
 </head>
