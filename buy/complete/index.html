@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Purchase Complete - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+
+  <style>
+    .complete-card {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      margin: 10px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .btn.green { background: linear-gradient(135deg, #00FF00, #00CC00); }
+    .btn.blue { background: linear-gradient(135deg, #87CEEB, #00008B); }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+      <script>
+        fetch("../../includes/nav.html")
+          .then(res => res.text())
+          .then(html => { document.getElementById("nav-placeholder").innerHTML = html; });
+      </script>
+    </div>
+  </header>
+
+  <main class="container" id="content"></main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    const path = window.location.pathname.split("/").filter(Boolean);
+    const itemId = path[path.length - 2];
+
+    const orderId = Math.floor(Math.random() * 900000) + 100000;
+    const timestamp = new Date().toLocaleString();
+
+    fetch("/PlasmaticCoins/in/inventory/items.json")
+      .then(res => res.json())
+      .then(data => {
+        const allItems = [
+          ...data["full-collections"],
+          ...data["individual-coins"],
+          ...data["packs-of-coins"]
+        ];
+
+        const item = allItems.find(i => String(i.id) === itemId);
+        const container = document.getElementById("content");
+
+        if (!item) {
+          container.innerHTML = `<p class="not-found">Item not found.</p>`;
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="complete-card">
+            <h2>Purchase Complete!</h2>
+            <p>Thank you for your purchase of:</p>
+            <h3>${item.name}</h3>
+
+            <p><strong>Order ID:</strong> ${orderId}</p>
+            <p><strong>Completed:</strong> ${timestamp}</p>
+
+            <a href="/PlasmaticCoins/buy/${item.id}/" class="btn blue">Back to Item</a>
+            <a href="/PlasmaticCoins/in/inventory/" class="btn green">Return to Inventory</a>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
