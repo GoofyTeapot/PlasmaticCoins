@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../img/logo.png">
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <style>
+    .checkout-card {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .checkout-card img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .pill-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    .pill.collector { background: rgba(255,255,0,0.4); }
+    .pill.price { background: rgba(0,255,0,0.4); }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .paypal-btn, .confirm-btn {
+      padding: 10px 16px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      flex: 1;
+      margin: 0 5px;
+      text-align: center;
+    }
+
+    .paypal-btn {
+      background: linear-gradient(135deg, #87CEEB, #00008B);
+    }
+
+    .confirm-btn {
+      background: linear-gradient(135deg, #00FF00, #00CC00);
+    }
+
+    .paypal-btn:hover, .confirm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+
+    .not-found {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+      <script>
+        fetch("../includes/nav.html")
+          .then(res => res.text())
+          .then(html => { document.getElementById("nav-placeholder").innerHTML = html; });
+      </script>
+    </div>
+  </header>
+
+  <main class="container" id="content"></main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <script>
+    const path = window.location.pathname.split("/").filter(Boolean);
+    const itemId = path[path.length - 1];
+
+    fetch("/PlasmaticCoins/in/inventory/items.json")
+      .then(res => res.json())
+      .then(data => {
+        const allItems = [
+          ...data["full-collections"],
+          ...data["individual-coins"],
+          ...data["packs-of-coins"]
+        ];
+
+        const item = allItems.find(i => String(i.id) === itemId);
+        const container = document.getElementById("content");
+
+        if (!item) {
+          container.innerHTML = `<p class="not-found">Item not found.</p>`;
+          return;
+        }
+
+        let pillsHTML = "";
+        if (item["things-to-know"]) {
+          pillsHTML += `<div class="pill-container">`;
+          item["things-to-know"].forEach(tag => {
+            if (tag === "great-for-collectors") pillsHTML += `<span class="pill collector">Great for Collectors!</span>`;
+            if (tag === "price-comparable") pillsHTML += `<span class="pill price">Comparable Price!</span>`;
+          });
+          pillsHTML += `</div>`;
+        }
+
+        container.innerHTML = `
+          <div class="checkout-card">
+            <img src="${item.photo}" alt="${item.name}">
+            <h2>Checkout: ${item.name}</h2>
+
+            ${pillsHTML}
+
+            <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+            <p><strong>Shipping:</strong> $${item.shipping.toFixed(2)}</p>
+            <p><strong>Total:</strong> $${(item.price + item.shipping).toFixed(2)}</p>
+
+            <p style="margin-top: 12px;">${item.description}</p>
+
+            <div class="button-row">
+              <a href="https://paypal.me/PlasmaticCoins" target="_blank" class="paypal-btn">Pay with PayPal</a>
+              <a href="/PlasmaticCoins/buy/${item.id}/complete/" class="confirm-btn">Confirm Purchase</a>
+            </div>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
