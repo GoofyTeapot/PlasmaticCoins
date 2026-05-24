@@ -60,8 +60,11 @@
   </footer>
 
   <script>
-    const path = window.location.pathname.split("/").filter(Boolean);
-    const itemId = path[path.length - 2];
+    // Extract ID from the ORIGINAL URL (GitHub Pages safe)
+    const url = window.location.href;
+    const match = url.match(/buy\/(\d+)/);
+    const itemId = match ? match[1] : null;
+
 
     const orderId = Math.floor(Math.random() * 900000) + 100000;
     const timestamp = new Date().toLocaleString();
