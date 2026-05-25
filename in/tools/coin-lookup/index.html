@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <title>Coin Lookup - PlasmaticCoins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="../../img/logo.png">
-  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="icon" type="image/png" href="../../../img/logo.png">
+  <link rel="stylesheet" href="../../../css/styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <h1 class="logo">
-        <img src="../../img/logo.png" class="inline-icon">
+        <img src="../../../img/logo.png" class="inline-icon">
         Plasmatic Coins
       </h1>
 
       <div id="nav-placeholder"></div>
 
       <script>
-        fetch("../../includes/nav.html")
+        fetch("../../../includes/nav.html")
         .then(res => res.text())
         .then(html => {
           document.getElementById("nav-placeholder").innerHTML = html;
