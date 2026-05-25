@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coin Lookup - PlasmaticCoins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../../img/logo.png">
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <img src="../../img/logo.png" class="inline-icon">
+        Plasmatic Coins
+      </h1>
+
+      <div id="nav-placeholder"></div>
+
+      <script>
+        fetch("../../includes/nav.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+      </script>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Coin Lookup</h2>
+      <p>Enter a PCGS Number and Grade to retrieve CoinFacts data.</p>
+    </section>
+
+    <section>
+      <form id="lookupForm">
+
+        <label>PCGS Number:</label><br>
+
+        <!-- Ghost Autocomplete Wrapper -->
+        <div style="position:relative; display:inline-block;">
+          <input type="text" id="pcgsNumber" required style="padding:8px;width:250px; position:relative; background:transparent;">
+          <div id="pcgsGhost" style="
+            position:absolute;
+            top:0;
+            left:0;
+            padding:8px;
+            width:250px;
+            color:#ccc;
+            pointer-events:none;
+            font-family:inherit;
+            font-size:inherit;
+            white-space:nowrap;
+            overflow:hidden;
+          "></div>
+        </div>
+
+        <br><br>
+
+        <label>Grade Number (e.g., 55, 66, 70):</label><br>
+        <input type="text" id="gradeNo" required style="padding:8px;width:250px;"><br><br>
+
+        <label>Plus Grade:</label><br>
+        <select id="plus" style="padding:8px;width:250px;">
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select><br><br>
+
+        <button type="submit" class="btn-primary">Lookup Coin</button>
+      </form>
+    </section>
+
+    <section id="results" style="margin-top:30px; display:none;">
+      <h2>Coin Information</h2>
+
+      <div class="card-grid">
+
+        <article class="card" id="basicCard">
+          <h3>Basic Info</h3>
+          <p id="basicInfo"></p>
+        </article>
+
+        <article class="card" id="detailsCard">
+          <h3>Details</h3>
+          <p id="detailsInfo"></p>
+        </article>
+
+        <article class="card" id="varietyCard">
+          <h3>Variety</h3>
+          <p id="varietyInfo"></p>
+        </article>
+
+        <article class="card" id="priceCard">
+          <h3>Price & Population</h3>
+          <p id="priceInfo"></p>
+        </article>
+
+        <article class="card" id="notesCard">
+          <h3>CoinFacts Notes</h3>
+          <p id="notesInfo"></p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Plasmatic Coins</p>
+    </div>
+  </footer>
+
+  <!-- MAIN LOOKUP SCRIPT -->
+  <script>
+    document.getElementById("lookupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const pcgsNumber = document.getElementById("pcgsNumber").value;
+      const gradeNo = document.getElementById("gradeNo").value;
+      const plus = document.getElementById("plus").value;
+
+      const url = `https://pcgs-proxy.simplyaverage0.workers.dev/coindetail?pcgsNumber=${pcgsNumber}&gradeNo=${gradeNo}&plus=${plus}`;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (!data || !data.IsValidRequest) {
+        alert("No data found.");
+        return;
+      }
+
+      document.getElementById("results").style.display = "block";
+
+      document.getElementById("basicInfo").innerHTML = `
+        <strong>${data.Name}</strong><br>
+        Year: ${data.Year}<br>
+        Denomination: ${data.Denomination}<br>
+        Mint Mark: ${data.MintMark}<br>
+        Mint Location: ${data.MintLocation}<br>
+        Country: ${data.Country}<br>
+        Grade: ${data.Grade}
+      `;
+
+      document.getElementById("detailsInfo").innerHTML = `
+        Metal: ${data.MetalContent}<br>
+        Diameter: ${data.Diameter} mm<br>
+        Weight: ${data.Weight} g<br>
+        Edge: ${data.Edge}<br>
+        Designer: ${data.Designer}<br>
+        Series: ${data.SeriesName}<br>
+        Category: ${data.Category}
+      `;
+
+      document.getElementById("varietyInfo").innerHTML = `
+        Major Variety: ${data.MajorVariety || "None"}<br>
+        Minor Variety: ${data.MinorVariety || "None"}<br>
+        Die Variety: ${data.DieVariety || "None"}
+      `;
+
+      document.getElementById("priceInfo").innerHTML = `
+        Price Guide: $${data.PriceGuideValue}<br>
+        Population: ${data.Population}<br>
+        Higher Pop: ${data.PopHigher}<br>
+        Mintage: ${data.Mintage}
+      `;
+
+      document.getElementById("notesInfo").textContent = data.CoinFactsNotes || "No notes available.";
+    });
+  </script>
+
+  <!-- GHOST AUTOCOMPLETE SCRIPT -->
+  <script>
+    async function pcgsSuggest(query) {
+      const res = await fetch(
+        "https://www.pcgs.com/api/search/autocomplete?query=" + encodeURIComponent(query)
+      );
+      const data = await res.json();
+      return data[0]?.label || "";
+    }
+
+    const pcgsInput = document.getElementById("pcgsNumber");
+    const pcgsGhost = document.getElementById("pcgsGhost");
+
+    pcgsInput.addEventListener("input", async () => {
+      const text = pcgsInput.value.trim();
+
+      if (text.length < 1) {
+        pcgsGhost.textContent = "";
+        return;
+      }
+
+      const suggestion = await pcgsSuggest(text);
+
+      if (!suggestion.toLowerCase().startsWith(text.toLowerCase())) {
+        pcgsGhost.textContent = "";
+        return;
+      }
+
+      const rest = suggestion.slice(text.length);
+      pcgsGhost.innerHTML = text + "<span style='color:#ccc'>" + rest + "</span>";
+    });
+
+    pcgsInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && pcgsGhost.textContent.length > pcgsInput.value.length) {
+        pcgsInput.value = pcgsGhost.textContent;
+        pcgsGhost.textContent = "";
+      }
+    });
+  </script>
+
+</body>
+</html>
