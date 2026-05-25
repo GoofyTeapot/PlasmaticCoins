@@ -5,7 +5,7 @@
   <title>Coin Lookup - PlasmaticCoins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../../../img/logo.png">
-  <link rel="stylesheet" href="../../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/../styles.css" />
 </head>
 <body>
   <header class="site-header">
@@ -30,23 +30,23 @@
   <main class="container">
     <section class="hero">
       <h2>Coin Lookup</h2>
-      <p>Enter a PCGS Number and Grade to retrieve CoinFacts data.</p>
+      <p>Search by coin name OR PCGS number.</p>
     </section>
 
     <section>
       <form id="lookupForm">
 
-        <label>PCGS Number:</label><br>
-
-        <!-- Ghost Autocomplete Wrapper -->
+        <!-- COIN NAME WITH GHOST AUTOCOMPLETE -->
+        <label>Coin Name:</label><br>
         <div style="position:relative; display:inline-block;">
-          <input type="text" id="pcgsNumber" required style="padding:8px;width:250px; position:relative; background:transparent;">
-          <div id="pcgsGhost" style="
+          <input type="text" id="coinName" autocomplete="off"
+            style="padding:8px;width:350px; position:relative; background:transparent;">
+          <div id="coinGhost" style="
             position:absolute;
             top:0;
             left:0;
             padding:8px;
-            width:250px;
+            width:350px;
             color:#ccc;
             pointer-events:none;
             font-family:inherit;
@@ -55,8 +55,11 @@
             overflow:hidden;
           "></div>
         </div>
-
         <br><br>
+
+        <!-- PCGS NUMBER (AUTO-FILLED AFTER NAME SELECTION) -->
+        <label>PCGS Number:</label><br>
+        <input type="text" id="pcgsNumber" required style="padding:8px;width:250px;"><br><br>
 
         <label>Grade Number (e.g., 55, 66, 70):</label><br>
         <input type="text" id="gradeNo" required style="padding:8px;width:250px;"><br><br>
@@ -169,42 +172,56 @@
     });
   </script>
 
-  <!-- GHOST AUTOCOMPLETE SCRIPT -->
+  <!-- GHOST AUTOCOMPLETE FOR COIN NAME -->
   <script>
     async function pcgsSuggest(query) {
       const res = await fetch(
         "https://www.pcgs.com/api/search/autocomplete?query=" + encodeURIComponent(query)
       );
       const data = await res.json();
-      return data[0]?.label || "";
+      return data[0] || null;
     }
 
-    const pcgsInput = document.getElementById("pcgsNumber");
-    const pcgsGhost = document.getElementById("pcgsGhost");
+    const nameInput = document.getElementById("coinName");
+    const nameGhost = document.getElementById("coinGhost");
+    const pcgsField = document.getElementById("pcgsNumber");
 
-    pcgsInput.addEventListener("input", async () => {
-      const text = pcgsInput.value.trim();
+    nameInput.addEventListener("input", async () => {
+      const text = nameInput.value.trim();
 
       if (text.length < 1) {
-        pcgsGhost.textContent = "";
+        nameGhost.textContent = "";
         return;
       }
 
       const suggestion = await pcgsSuggest(text);
-
-      if (!suggestion.toLowerCase().startsWith(text.toLowerCase())) {
-        pcgsGhost.textContent = "";
+      if (!suggestion) {
+        nameGhost.textContent = "";
         return;
       }
 
-      const rest = suggestion.slice(text.length);
-      pcgsGhost.innerHTML = text + "<span style='color:#ccc'>" + rest + "</span>";
+      const label = suggestion.label;
+
+      if (!label.toLowerCase().startsWith(text.toLowerCase())) {
+        nameGhost.textContent = "";
+        return;
+      }
+
+      const rest = label.slice(text.length);
+      nameGhost.innerHTML = text + "<span style='color:#ccc'>" + rest + "</span>";
     });
 
-    pcgsInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && pcgsGhost.textContent.length > pcgsInput.value.length) {
-        pcgsInput.value = pcgsGhost.textContent;
-        pcgsGhost.textContent = "";
+    nameInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && nameGhost.textContent.length > nameInput.value.length) {
+        nameInput.value = nameGhost.textContent;
+        nameGhost.textContent = "";
+
+        // Auto-fill PCGS number
+        pcgsSuggest(nameInput.value).then(s => {
+          if (s) pcgsField.value = s.pcgsNo;
+        });
+
+        e.preventDefault();
       }
     });
   </script>
