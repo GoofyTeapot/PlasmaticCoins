@@ -176,11 +176,12 @@
   <script>
     async function pcgsSuggest(query) {
       const res = await fetch(
-        "https://www.pcgs.com/api/search/autocomplete?query=" + encodeURIComponent(query)
+        "https://pcgs-proxy.simplyaverage0.workers.dev/autocomplete?query=" + encodeURIComponent(query)
       );
-      const data = await res.json();
-      return data[0] || null;
+    const data = await res.json();
+    return data[0] || null;
     }
+
 
     const nameInput = document.getElementById("coinName");
     const nameGhost = document.getElementById("coinGhost");
